@@ -3,3111 +3,555 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Run The Day — race registration software and professional chip timing. Organizing a race is hard. We make it easier." />
+  <meta name="description" content="Run The Day — race production, chip timing and registration since 2003. Organizing a race is hard. We make it easier." />
   <meta name="theme-color" content="#12121b" />
-  <title>Organizing a race is hard. We make it easier. | Run The Day</title>
+  <title>Organizing a race is hard. Run The Day makes it easier.</title>
   <link rel="icon" href="assets/images/favicon.ico" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-/* ==========================================================================
-   Run The Day — Design System
-   Brand-preserving tokens: Black · Gold · Teal · Proxima Nova
-   8px spacing scale · Soft layered elevation · Unified card system
-   ========================================================================== */
-
 @font-face {
   font-family: "Proxima Nova";
   src: url("assets/fonts/Proxima-Nova-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 400; font-style: normal; font-display: swap;
 }
-
 @font-face {
   font-family: "Proxima Nova";
   src: url("assets/fonts/Proxima-Nova-Extrabold.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 800; font-style: normal; font-display: swap;
 }
 
 :root {
-  /* Brand */
   --color-black: #12121b;
   --color-black-deep: #0b0b12;
   --color-black-elevated: #181828;
   --color-black-soft: #1e1e2e;
   --color-gold: #f0c94a;
   --color-gold-bright: #f8c71c;
-  --color-gold-soft: #faeec7;
   --color-gold-muted: #c9a227;
   --color-teal: #00efa9;
   --color-teal-soft: #50e3c3;
   --color-teal-deep: #00b87f;
-  --color-orange: #fa6b1e;
-
-  /* Neutrals */
   --color-white: #ffffff;
-  --color-off-white: #f7f7f8;
-  --color-gray-50: #f4f4f5;
-  --color-gray-100: #e7e7e8;
-  --color-gray-200: #d0d0d4;
-  --color-gray-300: #a8a8b0;
-  --color-gray-400: #75757e;
-  --color-gray-500: #57575e;
-  --color-gray-600: #3c3c46;
-  --color-gray-700: #2a2a34;
-
-  /* Surfaces */
-  --surface-base: var(--color-black);
-  --surface-raised: var(--color-black-elevated);
-  --surface-overlay: rgba(18, 18, 27, 0.72);
-  --surface-glass: rgba(255, 255, 255, 0.06);
-  --surface-glass-border: rgba(255, 255, 255, 0.12);
-  --surface-light: var(--color-off-white);
-  --surface-card: var(--color-white);
-
-  /* Text */
-  --text-primary: var(--color-white);
-  --text-secondary: rgba(255, 255, 255, 0.72);
-  --text-tertiary: rgba(255, 255, 255, 0.48);
-  --text-inverse: var(--color-black);
-  --text-muted: var(--color-gray-500);
-  --text-body-light: var(--color-gray-600);
-
-  /* Gradients */
-  --gradient-hero: linear-gradient(
-    135deg,
-    rgba(11, 11, 18, 0.92) 0%,
-    rgba(18, 18, 27, 0.75) 45%,
-    rgba(0, 184, 127, 0.18) 100%
-  );
-  --gradient-gold: linear-gradient(135deg, var(--color-gold-bright) 0%, var(--color-gold) 50%, var(--color-gold-muted) 100%);
-  --gradient-teal: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-deep) 100%);
-  --gradient-mesh: radial-gradient(ellipse 80% 60% at 20% 20%, rgba(240, 201, 74, 0.12), transparent 50%),
-    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(0, 239, 169, 0.1), transparent 50%),
-    radial-gradient(ellipse 50% 40% at 50% 80%, rgba(250, 107, 30, 0.06), transparent 50%);
-  --gradient-track: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 80px,
-    rgba(240, 201, 74, 0.03) 80px,
-    rgba(240, 201, 74, 0.03) 81px
-  );
-
-  /* Typography scale */
-  --font-family: "Proxima Nova", "Montserrat", "Segoe UI", sans-serif;
-  --font-weight-regular: 400;
-  --font-weight-bold: 800;
-
-  --text-display: clamp(3rem, 7vw, 5.5rem);
-  --text-h1: clamp(2.5rem, 5vw, 4rem);
-  --text-h2: clamp(2rem, 4vw, 3rem);
-  --text-h3: clamp(1.375rem, 2.5vw, 1.75rem);
-  --text-h4: 1.25rem;
-  --text-body-lg: 1.125rem;
-  --text-body: 1rem;
-  --text-caption: 0.875rem;
-  --text-label: 0.75rem;
-  --text-stat: clamp(2rem, 4vw, 3.25rem);
-
-  --leading-tight: 1.05;
-  --leading-snug: 1.2;
-  --leading-normal: 1.55;
-  --leading-relaxed: 1.7;
-
-  --tracking-tight: -0.03em;
-  --tracking-normal: 0;
-  --tracking-wide: 0.06em;
-  --tracking-wider: 0.12em;
-
-  /* 8px spacing system */
-  --space-1: 0.25rem; /* 4 */
-  --space-2: 0.5rem; /* 8 */
-  --space-3: 0.75rem; /* 12 */
-  --space-4: 1rem; /* 16 */
-  --space-5: 1.5rem; /* 24 */
-  --space-6: 2rem; /* 32 */
-  --space-7: 2.5rem; /* 40 */
-  --space-8: 3rem; /* 48 */
-  --space-9: 4rem; /* 64 */
-  --space-10: 5rem; /* 80 */
-  --space-11: 6rem; /* 96 */
-  --space-12: 8rem; /* 128 */
-
-  --section-pad-y: clamp(5rem, 10vw, 8rem);
-  --section-pad-x: clamp(1.25rem, 5vw, 2rem);
-  --container: 1200px;
-  --container-wide: 1400px;
-
-  /* Radii — unified */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
-
-  /* Soft layered shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.04), 0 16px 40px rgba(0, 0, 0, 0.12);
-  --shadow-float: 0 8px 16px rgba(0, 0, 0, 0.06), 0 24px 64px rgba(0, 0, 0, 0.16);
-  --shadow-gold: 0 4px 20px rgba(240, 201, 74, 0.28);
-  --shadow-teal: 0 4px 20px rgba(0, 239, 169, 0.22);
-  --shadow-glow-gold: 0 0 40px rgba(240, 201, 74, 0.15);
-
-  /* Motion */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --duration-fast: 200ms;
-  --duration-base: 320ms;
-  --duration-slow: 480ms;
-
-  /* Z-index */
-  --z-nav: 1000;
-  --z-overlay: 900;
-  --z-modal: 1100;
-
-  /* Borders */
-  --border-subtle: 1px solid rgba(255, 255, 255, 0.08);
-  --border-light: 1px solid var(--color-gray-100);
-  --border-gold: 1px solid rgba(240, 201, 74, 0.35);
+  --surface-glass: rgba(255,255,255,0.06);
+  --surface-glass-border: rgba(255,255,255,0.12);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255,255,255,0.72);
+  --text-tertiary: rgba(255,255,255,0.48);
+  --gradient-gold: linear-gradient(135deg, #f8c71c 0%, #f0c94a 50%, #c9a227 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(11,11,18,.92) 0%, rgba(18,18,27,.72) 45%, rgba(0,184,127,.16) 100%);
+  --font: "Proxima Nova", "Montserrat", "Segoe UI", sans-serif;
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+  --space-5: 1.5rem; --space-6: 2rem; --space-7: 2.5rem; --space-8: 3rem;
+  --space-9: 4rem; --space-10: 5rem;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px; --radius-xl: 24px;
+  --shadow-md: 0 4px 8px rgba(0,0,0,.04), 0 12px 28px rgba(0,0,0,.18);
+  --shadow-lg: 0 4px 8px rgba(0,0,0,.04), 0 16px 40px rgba(0,0,0,.22);
+  --shadow-glow-gold: 0 0 0 1px rgba(240,201,74,.25), 0 10px 40px rgba(240,201,74,.18);
+  --z-nav: 100; --container: 1180px;
+  --ease: cubic-bezier(.22,1,.36,1);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --duration-fast: 0ms;
-    --duration-base: 0ms;
-    --duration-slow: 0ms;
-  }
-}
-
-/* ==========================================================================
-   Run The Day — Homepage Styles
-   Premium sports editorial · Black / Gold / Teal
-   ========================================================================== */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
-
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: .01ms !important;
   }
 }
-
 body {
-  font-family: var(--font-family);
-  font-weight: var(--font-weight-regular);
-  font-size: var(--text-body);
-  line-height: var(--leading-normal);
-  color: var(--text-primary);
-  background: var(--color-black-deep);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font); font-weight: 400; font-size: 1rem; line-height: 1.55;
+  color: var(--text-primary); background: var(--color-black-deep);
+  overflow-x: hidden; -webkit-font-smoothing: antialiased;
 }
-
-.site-header,
-main,
-.site-footer {
-  position: relative;
-  z-index: 2;
-}
-
-.site-header {
-  z-index: var(--z-nav);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul, ol { list-style: none; }
-
-button, input, select {
-  font: inherit;
-  color: inherit;
-}
-
-:focus-visible {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 3px;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }
 .skip-link {
-  position: absolute;
-  left: var(--space-4);
-  top: -100%;
-  z-index: 2000;
-  background: var(--color-gold);
-  color: var(--color-black);
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-sm);
-  font-weight: var(--font-weight-bold);
+  position: absolute; left: -999px; top: 0; background: var(--color-gold); color: #12121b;
+  padding: 8px 12px; z-index: 999;
 }
-
-.skip-link:focus {
-  top: var(--space-4);
-}
-
-/* --------------------------------------------------------------------------
-   Layout
-   -------------------------------------------------------------------------- */
-
-.container {
-  width: min(100% - (var(--section-pad-x) * 2), var(--container));
-  margin-inline: auto;
-}
-
-.container--narrow {
-  width: min(100% - (var(--section-pad-x) * 2), 800px);
-}
-
-.section-pad {
-  padding-block: var(--section-pad-y);
-}
-
-.section-pad-sm {
-  padding-block: clamp(3rem, 6vw, 5rem);
-}
-
-.section-header {
-  max-width: 40rem;
-  margin-bottom: var(--space-9);
-}
-
-.section-header--center {
-  margin-inline: auto;
-  text-align: center;
-}
-
+.skip-link:focus { left: 8px; top: 8px; }
+.container { width: min(100% - 2rem, var(--container)); margin-inline: auto; }
+.section-pad { padding-block: var(--space-10); }
+.section-pad-sm { padding-block: var(--space-7); }
 .eyebrow {
-  display: inline-block;
-  font-size: var(--text-label);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--color-gold);
-  margin-bottom: var(--space-3);
+  display: inline-block; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--color-teal); font-weight: 800; margin-bottom: var(--space-3);
 }
-
-.lede {
-  font-size: var(--text-body-lg);
-  color: var(--text-secondary);
-  line-height: var(--leading-relaxed);
-  margin-top: var(--space-4);
+.eyebrow--gold { color: var(--color-gold); }
+.section-head { max-width: 42rem; margin-bottom: var(--space-7); }
+.section-head h2 {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em;
 }
-
-h1, h2, h3, h4 {
-  font-weight: var(--font-weight-bold);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
+.section-head p, .lede {
+  color: var(--text-secondary); margin-top: var(--space-3); font-size: 1.125rem; max-width: 46ch;
 }
-
-h2 { font-size: var(--text-h2); }
-h3 { font-size: var(--text-h3); }
-h4 { font-size: var(--text-h4); }
-
-/* --------------------------------------------------------------------------
-   Buttons
-   -------------------------------------------------------------------------- */
 
 .btn {
-  --btn-bg: transparent;
-  --btn-color: var(--color-white);
-  --btn-border: transparent;
-  --btn-shadow: none;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  min-height: 48px;
-  padding: 0.85rem 1.5rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--btn-border);
-  background: var(--btn-bg);
-  color: var(--btn-color);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--text-caption);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: var(--btn-shadow);
-  transition:
-    transform var(--duration-fast) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out),
-    background var(--duration-fast) var(--ease-out),
-    border-color var(--duration-fast) var(--ease-out),
-    color var(--duration-fast) var(--ease-out);
-  overflow: hidden;
-  isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 48px; padding: 0 1.25rem; border-radius: var(--radius-md);
+  font-weight: 800; letter-spacing: .02em; text-transform: uppercase; font-size: .875rem;
+  border: 1px solid transparent; cursor: pointer; transition: transform .2s var(--ease), box-shadow .2s, background .2s, border-color .2s;
 }
-
-.btn__arrow {
-  display: inline-block;
-  transition: transform var(--duration-fast) var(--ease-out);
-}
-
-.btn:hover .btn__arrow {
-  transform: translateX(4px);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn:active {
-  transform: translateY(0);
-}
-
 .btn--primary {
-  --btn-bg: var(--gradient-gold);
-  --btn-color: var(--color-black);
-  --btn-shadow: var(--shadow-gold);
-  background-image: var(--gradient-gold);
+  background: var(--gradient-gold); color: #12121b; box-shadow: var(--shadow-glow-gold);
 }
-
-.btn--primary:hover {
-  --btn-shadow: var(--shadow-gold), var(--shadow-glow-gold);
-}
-
+.btn--primary:hover { transform: translateY(-2px); }
 .btn--secondary {
-  --btn-bg: transparent;
-  --btn-color: var(--color-white);
-  --btn-border: rgba(255, 255, 255, 0.28);
-  backdrop-filter: blur(8px);
+  background: transparent; color: #fff; border-color: rgba(255,255,255,.35);
 }
+.btn--secondary:hover { border-color: var(--color-gold); color: var(--color-gold); }
+.btn--text { background: none; border: 0; color: var(--text-secondary); text-transform: none; letter-spacing: 0; font-weight: 600; min-height: auto; padding: .5rem; }
+.btn--text:hover { color: #fff; }
+.btn--lg { min-height: 56px; padding-inline: 1.5rem; }
+.btn__arrow { transition: transform .2s var(--ease); }
+.btn:hover .btn__arrow { transform: translateX(3px); }
 
-.btn--secondary:hover {
-  --btn-border: var(--color-gold);
-  --btn-color: var(--color-gold);
-}
-
-.btn--ghost {
-  --btn-color: var(--color-gold);
-  --btn-border: rgba(240, 201, 74, 0.35);
-}
-
-.btn--ghost:hover {
-  --btn-bg: rgba(240, 201, 74, 0.08);
-}
-
-.btn--text {
-  --btn-color: rgba(255, 255, 255, 0.78);
-  min-height: auto;
-  padding: var(--space-2) var(--space-3);
-  text-transform: none;
-  letter-spacing: 0;
-  font-weight: var(--font-weight-regular);
-  font-size: var(--text-body);
-}
-
-.btn--text:hover {
-  --btn-color: var(--color-white);
-  transform: none;
-}
-
-.btn--lg {
-  min-height: 56px;
-  padding-inline: 1.75rem;
-  font-size: var(--text-body);
-}
-
-.btn--sm {
-  min-height: 40px;
-  padding: 0.5rem 1rem;
-}
-
-.btn--block {
-  width: 100%;
-}
-
-.btn.is-loading {
-  pointer-events: none;
-  opacity: 0.8;
-}
-
-.btn.is-loading::after {
-  content: "";
-  width: 1rem;
-  height: 1rem;
-  margin-left: var(--space-2);
-  border: 2px solid currentColor;
-  border-right-color: transparent;
-  border-radius: 50%;
-  animation: spin 0.6s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Ripple */
-.btn .ripple {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
-  transform: scale(0);
-  animation: ripple 0.5s var(--ease-out);
-  pointer-events: none;
-  z-index: 0;
-}
-
-@keyframes ripple {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   Cards — Primary / Secondary / Feature / Glass / Metric
-   -------------------------------------------------------------------------- */
-
-.primary-card,
-.secondary-card,
-.feature-card,
-.glass-card,
-.metric-card {
-  border-radius: var(--radius-lg);
-  transition:
-    transform var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out),
-    border-color var(--duration-base) var(--ease-out);
-}
-
-.primary-card {
-  background: var(--surface-raised);
-  border: var(--border-subtle);
-  box-shadow: var(--shadow-md);
-  padding: var(--space-6);
-}
-
-.secondary-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: var(--border-subtle);
-  box-shadow: var(--shadow-sm);
-}
-
-.feature-card {
-  display: flex;
-  gap: var(--space-4);
-  padding: var(--space-5);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
-  border: var(--border-subtle);
-}
-
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(240, 201, 74, 0.25);
-}
-
-.feature-card__icon {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius-md);
-  background: rgba(240, 201, 74, 0.1);
-  color: var(--color-gold);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--text-caption);
-}
-
-.feature-card h3 {
-  font-size: var(--text-h4);
-  margin-bottom: var(--space-2);
-}
-
-.feature-card p {
-  color: var(--text-secondary);
-  font-size: var(--text-caption);
-}
-
-.glass-card {
-  background: var(--surface-glass);
-  border: 1px solid var(--surface-glass-border);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  box-shadow: var(--shadow-md);
-}
-
-.metric-card {
-  position: relative;
-  padding: var(--space-5);
-  min-width: 160px;
-}
-
-.metric-card__value {
-  display: block;
-  font-size: var(--text-stat);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--tracking-tight);
-  background: var(--gradient-gold);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  line-height: 1;
-  margin-bottom: var(--space-2);
-}
-
-.metric-card__label {
-  display: block;
-  font-size: var(--text-caption);
-  color: var(--text-secondary);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-}
-
-.metric-card__live {
-  position: absolute;
-  top: var(--space-3);
-  right: var(--space-3);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.65rem;
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--color-teal);
-}
-
-.metric-card__live i,
-.pill--live i,
-.hud-chip--teal .hud-chip__label i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-teal);
-  box-shadow: 0 0 0 0 rgba(0, 239, 169, 0.6);
-  animation: pulse 1.8s var(--ease-in-out) infinite;
-}
-
-@keyframes pulse {
-  70% { box-shadow: 0 0 0 8px rgba(0, 239, 169, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(0, 239, 169, 0); }
-}
-
-/* Floating motion for hero metrics */
-.float-a { animation: floatY 6s ease-in-out infinite; }
-.float-b { animation: floatY 7s ease-in-out infinite 0.4s; }
-.float-c { animation: floatY 5.5s ease-in-out infinite 0.8s; }
-.float-d { animation: floatY 6.5s ease-in-out infinite 1.2s; }
-
-@keyframes floatY {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-/* --------------------------------------------------------------------------
-   Badges / pills / tags
-   -------------------------------------------------------------------------- */
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-sm);
-  font-size: var(--text-label);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-secondary);
-  margin-bottom: var(--space-4);
-}
-
-.badge--gold {
-  background: rgba(240, 201, 74, 0.14);
-  color: var(--color-gold);
-}
-
-.badge--teal {
-  background: rgba(0, 239, 169, 0.12);
-  color: var(--color-teal);
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0.3rem 0.7rem;
-  border-radius: var(--radius-full);
-  font-size: var(--text-label);
-  font-weight: var(--font-weight-bold);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.pill--live {
-  color: var(--color-teal);
-  background: rgba(0, 239, 169, 0.1);
-}
-
-.pill--gold {
-  color: var(--color-black);
-  background: var(--color-gold);
-}
-
-.tag {
-  display: inline-block;
-  padding: 0.2rem 0.55rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.7rem;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-secondary);
-}
-
-.tag--gold { color: var(--color-gold); background: rgba(240, 201, 74, 0.12); }
-.tag--teal { color: var(--color-teal); background: rgba(0, 239, 169, 0.12); }
-
-.checklist {
-  display: grid;
-  gap: var(--space-3);
-  margin-top: var(--space-5);
-}
-
-.checklist li {
-  position: relative;
-  padding-left: var(--space-6);
-  color: var(--text-secondary);
-  font-size: var(--text-body);
-}
-
-.checklist li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.35rem;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8.5l3 3 6-7' stroke='%2300efa9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
-    center / contain no-repeat,
-    rgba(0, 239, 169, 0.12);
-}
-
-.checklist--muted li { color: var(--text-tertiary); }
-.checklist--muted li::before {
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8.5l3 3 6-7' stroke='%2375757e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
-    center / contain no-repeat,
-    rgba(255, 255, 255, 0.06);
-}
-
-.logo-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.65rem 1.15rem;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text-tertiary);
-  font-size: var(--text-caption);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-/* --------------------------------------------------------------------------
-   Navigation
-   -------------------------------------------------------------------------- */
-
+/* NAV */
 .site-header {
-  position: fixed;
-  inset: 0 0 auto 0;
-  z-index: var(--z-nav);
-  padding-block: var(--space-4);
-  transition:
-    background var(--duration-base) var(--ease-out),
-    backdrop-filter var(--duration-base) var(--ease-out),
-    padding var(--duration-base) var(--ease-out),
-    border-color var(--duration-base) var(--ease-out);
+  position: sticky; top: 0; z-index: var(--z-nav);
+  transition: background .3s, backdrop-filter .3s, border-color .3s;
   border-bottom: 1px solid transparent;
 }
-
 .site-header[data-scrolled="true"] {
-  padding-block: var(--space-3);
-  background: rgba(11, 11, 18, 0.72);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  border-bottom-color: rgba(255, 255, 255, 0.06);
+  background: rgba(11,11,18,.72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(255,255,255,.08);
 }
-
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-5);
-}
-
-.nav__logo {
-  height: 44px;
-  width: auto;
-  transition: transform var(--duration-fast) var(--ease-out);
-}
-
-.nav__brand:hover .nav__logo {
-  transform: scale(1.03);
-}
-
-.nav__menu {
-  display: flex;
-  align-items: center;
-  gap: var(--space-7);
-}
-
-.nav__links {
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
-}
-
-.nav__link {
-  position: relative;
-  font-size: var(--text-caption);
-  color: rgba(255, 255, 255, 0.78);
-  padding-block: var(--space-2);
-  transition: color var(--duration-fast) var(--ease-out);
-}
-
-.nav__link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--gradient-gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--duration-base) var(--ease-out);
-}
-
-.nav__link:hover,
-.nav__link[aria-current="true"] {
-  color: var(--color-white);
-}
-
-.nav__link:hover::after,
-.nav__link[aria-current="true"]::after {
-  transform: scaleX(1);
-}
-
-.nav__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 72px; }
+.nav__logo { width: 140px; height: auto; }
 .nav__toggle {
-  display: none;
-  width: 44px;
-  height: 44px;
-  border: 0;
-  background: transparent;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
+  display: none; width: 44px; height: 44px; border: 0; background: transparent; flex-direction: column;
+  align-items: center; justify-content: center; gap: 6px; cursor: pointer;
 }
-
-.nav__toggle-bar {
-  width: 22px;
-  height: 2px;
-  background: var(--color-white);
-  border-radius: 2px;
-  transition: transform var(--duration-fast) var(--ease-out), opacity var(--duration-fast);
-}
-
-.nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
+.nav__toggle-bar { width: 22px; height: 2px; background: #fff; display: block; transition: .2s; }
+.nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(2) { opacity: 0; }
-.nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
+.nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.nav__menu { display: flex; align-items: center; gap: 1.5rem; }
+.nav__links { display: flex; gap: 1.1rem; align-items: center; }
+.nav__link { font-size: .875rem; color: var(--text-secondary); font-weight: 600; }
+.nav__link:hover, .nav__link[aria-current="true"] { color: #fff; }
+.nav__actions { display: flex; align-items: center; gap: .75rem; }
 
-/* --------------------------------------------------------------------------
-   Hero
-   -------------------------------------------------------------------------- */
-
+/* HERO */
 .hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 6.5rem;
-  padding-bottom: 8rem;
-  overflow: hidden;
+  position: relative; min-height: 100svh; display: grid; align-items: end;
+  padding-bottom: 7rem; overflow: hidden;
 }
-
-.hero__media {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero__bg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  transform: scale(1.06);
-  transition: transform 1.2s var(--ease-out);
-  will-change: transform;
-}
-
-.hero.is-ready .hero__bg {
-  transform: scale(1.02);
-}
-
+.hero__media { position: absolute; inset: 0; }
+.hero__bg { width: 100%; height: 100%; object-fit: cover; }
 .hero__overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(11, 11, 18, 0.55) 0%, rgba(11, 11, 18, 0.35) 35%, rgba(11, 11, 18, 0.88) 100%),
-    var(--gradient-hero);
+  position: absolute; inset: 0;
+  background: var(--gradient-hero);
 }
-
 .hero__mesh {
-  position: absolute;
-  inset: 0;
-  background: var(--gradient-mesh);
-  animation: meshMove 18s ease-in-out infinite alternate;
-  pointer-events: none;
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 20%, rgba(240,201,74,.14), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 85% 70%, rgba(0,239,169,.1), transparent 50%);
 }
-
-@keyframes meshMove {
-  from { transform: translate3d(0, 0, 0) scale(1); }
-  to { transform: translate3d(-2%, 2%, 0) scale(1.05); }
-}
-
-.hero__track {
-  position: absolute;
-  inset: 0;
-  background: var(--gradient-track);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.hero__particles {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.hero__particles span {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: rgba(240, 201, 74, 0.55);
-  animation: particleDrift linear infinite;
-  opacity: 0.4;
-}
-
-@keyframes particleDrift {
-  0% { transform: translateY(100vh) scale(0.6); opacity: 0; }
-  15% { opacity: 0.55; }
-  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
-}
-
-.hero__content {
-  position: relative;
-  z-index: 2;
-  max-width: 52rem;
-  padding-inline: var(--section-pad-x);
-  width: min(100%, var(--container));
-  margin-inline: auto;
-  margin-left: max(var(--section-pad-x), calc((100% - var(--container)) / 2));
-}
-
-.hero__heading {
-  display: grid;
-  gap: var(--space-4);
-  margin-bottom: var(--space-5);
-}
-
+.hero__content { position: relative; z-index: 2; padding-top: 7rem; max-width: 48rem; }
 .hero__brand {
-  display: block;
-  font-size: clamp(2.75rem, 6.5vw, 5rem);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--tracking-tight);
-  line-height: var(--leading-tight);
-  color: var(--color-gold);
-  text-shadow: 0 0 48px rgba(240, 201, 74, 0.28);
+  display: block; font-size: clamp(3.25rem, 8vw, 6rem); line-height: .95;
+  letter-spacing: -.03em; color: var(--color-gold); font-weight: 800; margin-bottom: var(--space-3);
 }
-
 .hero__title {
-  display: block;
-  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
-  max-width: 22ch;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-white);
-  letter-spacing: var(--tracking-tight);
-  line-height: var(--leading-snug);
+  display: block; font-size: clamp(1.5rem, 3.2vw, 2.35rem); line-height: 1.15;
+  font-weight: 800; max-width: 22ch;
 }
-
-.hero__subtitle {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  color: var(--text-secondary);
-  max-width: 38rem;
-  line-height: var(--leading-relaxed);
-  margin-bottom: var(--space-7);
-}
-
-.hero__cta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-}
+.hero__title .g { color: var(--color-gold); }
+.hero__subtitle { color: var(--text-secondary); margin-top: var(--space-4); font-size: 1.125rem; max-width: 40ch; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-6); }
+.hero__helper { margin-top: var(--space-3); color: var(--text-tertiary); font-size: .875rem; }
+.hero__trust { margin-top: var(--space-4); color: var(--text-secondary); font-size: .95rem; max-width: 46ch; }
+.hero__trust b { color: var(--color-gold); font-weight: 800; }
 
 .hero__stats {
-  position: absolute;
-  z-index: 3;
-  right: max(var(--section-pad-x), calc((100% - var(--container-wide)) / 2));
-  bottom: 12%;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(150px, 180px));
-  gap: var(--space-3);
-}
-
-.hero__scroll {
-  position: absolute;
-  z-index: 3;
-  left: 50%;
-  bottom: var(--space-6);
-  transform: translateX(-50%);
-  width: 28px;
-  height: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: var(--radius-full);
-  display: grid;
-  place-items: start center;
-  padding-top: 8px;
-}
-
-.hero__scroll span {
-  width: 4px;
-  height: 8px;
-  border-radius: 4px;
-  background: var(--color-gold);
-  animation: scrollDot 1.6s var(--ease-in-out) infinite;
-}
-
-@keyframes scrollDot {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(16px); opacity: 0; }
-}
-
-/* --------------------------------------------------------------------------
-   Trust bar
-   -------------------------------------------------------------------------- */
-
-.trust-bar {
-  position: relative;
-  background:
-    var(--gradient-mesh),
-    linear-gradient(180deg, var(--color-black-deep), var(--color-black));
-  border-block: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.trust-bar__eyebrow {
-  text-align: center;
-  font-size: var(--text-label);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin-bottom: var(--space-6);
-}
-
-.trust-bar__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-5);
-  margin-bottom: var(--space-8);
-}
-
-.trust-bar__stat {
-  text-align: center;
-}
-
-.trust-bar__stat strong {
-  display: block;
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-gold);
-  letter-spacing: var(--tracking-tight);
-  margin-bottom: var(--space-2);
-}
-
-.trust-bar__stat span {
-  color: var(--text-tertiary);
-  font-size: var(--text-caption);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-}
-
-.logo-marquee {
-  overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-
-.logo-marquee__track {
-  display: flex;
-  gap: var(--space-4);
-  width: max-content;
-  animation: marquee 32s linear infinite;
-}
-
-@keyframes marquee {
-  to { transform: translateX(-50%); }
-}
-
-/* --------------------------------------------------------------------------
-   Problem
-   -------------------------------------------------------------------------- */
-
-.problem {
-  background:
-    radial-gradient(ellipse 50% 40% at 100% 0%, rgba(0, 239, 169, 0.06), transparent 50%),
-    var(--color-black);
-}
-
-.problem__grid {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: var(--space-9);
-  align-items: start;
-}
-
-.problem__list {
-  display: grid;
-  gap: var(--space-4);
-}
-
-/* --------------------------------------------------------------------------
-   Platform / Showcase
-   -------------------------------------------------------------------------- */
-
-.platform {
-  background:
-    radial-gradient(ellipse 60% 50% at 0% 20%, rgba(240, 201, 74, 0.07), transparent 55%),
-    var(--color-black-deep);
-}
-
-.showcase {
-  display: grid;
-  gap: var(--space-11);
-}
-
-.showcase__row {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: var(--space-8);
-  align-items: center;
-}
-
-.showcase__row--reverse {
-  direction: rtl;
-}
-
-.showcase__row--reverse > * {
-  direction: ltr;
-}
-
-.showcase__copy h3 {
-  margin-bottom: var(--space-4);
-}
-
-.showcase__copy > p {
-  color: var(--text-secondary);
-  font-size: var(--text-body-lg);
-}
-
-.showcase__visual {
-  position: relative;
-  min-height: 320px;
-}
-
-.showcase__visual--stack {
-  display: grid;
-  place-items: center;
-}
-
-/* Mockups */
-.mockup {
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, #1c1c2a, #14141e);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: var(--shadow-float);
-  overflow: hidden;
-  transform-style: preserve-3d;
-}
-
-.mockup--primary { width: 100%; }
-.mockup--secondary { width: min(100%, 440px); }
-.mockup--mini {
-  position: absolute;
-  right: 4%;
-  bottom: 8%;
-  width: 180px;
-  padding: var(--space-4);
-  display: grid;
-  gap: var(--space-2);
-}
-
-.mockup__chrome {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0.75rem 1rem;
-  background: rgba(0, 0, 0, 0.35);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.mockup__chrome span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.mockup__chrome span:nth-child(1) { background: #ff5f57; }
-.mockup__chrome span:nth-child(2) { background: #febc2e; }
-.mockup__chrome span:nth-child(3) { background: #28c840; }
-
-.mockup__chrome em {
-  margin-left: auto;
-  font-style: normal;
-  font-size: var(--text-label);
-  color: var(--text-tertiary);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-}
-
-.mockup__body { padding: var(--space-4); }
-
-.mock-dash {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: var(--space-4);
-  min-height: 280px;
-}
-
-.mock-dash__side {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: var(--radius-md);
-  padding: var(--space-4);
-}
-
-.mock-dash__side strong {
-  display: block;
-  color: var(--color-gold);
-  margin-bottom: var(--space-4);
-  font-size: var(--text-caption);
-}
-
-.mock-dash__side nav {
-  display: grid;
-  gap: var(--space-2);
-  font-size: var(--text-label);
-  color: var(--text-tertiary);
-}
-
-.mock-dash__side nav span {
-  padding: 0.4rem 0.55rem;
-  border-radius: var(--radius-sm);
-}
-
-.mock-dash__side nav .is-active {
-  background: rgba(240, 201, 74, 0.12);
-  color: var(--color-gold);
-}
-
-.mock-dash__main header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--space-3);
-  margin-bottom: var(--space-4);
-}
-
-.mock-dash__main small {
-  display: block;
-  color: var(--text-tertiary);
-  font-size: var(--text-label);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-}
-
-.mock-metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
-  margin-bottom: var(--space-4);
-}
-
-.mock-metrics div {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-md);
-  padding: var(--space-3);
-}
-
-.mock-metrics b {
-  display: block;
-  font-size: 1.15rem;
-  color: var(--color-white);
-}
-
-.mock-metrics span {
-  font-size: 0.7rem;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-}
-
-.mock-chart {
-  background: rgba(0, 239, 169, 0.04);
-  border: 1px solid rgba(0, 239, 169, 0.12);
-  border-radius: var(--radius-md);
-  padding: var(--space-4);
-}
-
-.mock-chart__bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  height: 88px;
-  margin-bottom: var(--space-3);
-}
-
-.mock-chart__bars i {
-  flex: 1;
-  height: var(--h);
-  border-radius: 4px 4px 0 0;
-  background: linear-gradient(180deg, var(--color-teal), rgba(0, 239, 169, 0.2));
-  animation: barGrow 1.2s var(--ease-out) both;
-}
-
-@keyframes barGrow {
-  from { transform: scaleY(0.2); transform-origin: bottom; opacity: 0.4; }
-  to { transform: scaleY(1); opacity: 1; }
-}
-
-.mock-chart p {
-  font-size: var(--text-label);
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-}
-
-.float-window {
-  position: absolute;
-  left: -12px;
-  bottom: 18%;
-  padding: var(--space-4);
-  width: 180px;
-  display: grid;
-  gap: var(--space-2);
-  animation: floatY 7s ease-in-out infinite;
-}
-
-.float-window strong {
-  font-size: var(--text-caption);
-}
-
-.float-window p {
-  font-size: var(--text-label);
-  color: var(--text-tertiary);
-}
-
-.mock-ops {
-  display: grid;
-  gap: var(--space-4);
-}
-
-.mock-ops__row {
-  display: grid;
-  gap: var(--space-2);
-  padding: var(--space-4);
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.progress {
-  height: 6px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-}
-
-.progress i {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--gradient-teal);
-}
-
-/* Image frame with product overlays */
-.image-frame {
-  position: relative;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-float);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.image-frame img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  transition: transform var(--duration-slow) var(--ease-out);
-}
-
-.image-frame:hover img {
-  transform: scale(1.04);
-}
-
-.image-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 35%, rgba(11, 11, 18, 0.75));
-  pointer-events: none;
-}
-
-.image-frame__overlays {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: var(--space-5);
-  display: grid;
-  align-content: space-between;
-  pointer-events: none;
-}
-
-.hud-chip {
-  justify-self: start;
-  padding: var(--space-3) var(--space-4);
-  display: grid;
-  gap: 4px;
-}
-
-.hud-chip__label {
-  font-size: 0.65rem;
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.hud-chip strong {
-  font-size: 1.25rem;
-  font-variant-numeric: tabular-nums;
-}
-
-.hud-chip--teal {
-  justify-self: end;
-  border-color: rgba(0, 239, 169, 0.25);
-}
-
-.hud-meta {
-  justify-self: start;
-  padding: var(--space-3) var(--space-4);
-  display: flex;
-  gap: var(--space-4);
-  align-items: baseline;
-}
-
-.hud-meta span {
-  font-size: var(--text-label);
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-}
-
-.hud-meta strong {
-  color: var(--color-teal);
-}
-
-.platform__cta {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  margin-top: var(--space-10);
-}
-
-/* --------------------------------------------------------------------------
-   How it works
-   -------------------------------------------------------------------------- */
-
-.how {
-  background:
-    linear-gradient(180deg, rgba(24, 24, 40, 0.6), transparent),
-    var(--color-black);
-}
-
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-  counter-reset: none;
-}
-
-.step {
-  position: relative;
-  overflow: hidden;
-}
-
-.step::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 3px;
-  background: var(--gradient-gold);
-}
-
-.step__num {
-  display: block;
-  font-size: var(--text-label);
-  letter-spacing: var(--tracking-wider);
-  color: var(--color-gold);
-  margin-bottom: var(--space-4);
-}
-
-.step h3 {
-  margin-bottom: var(--space-3);
-  font-size: var(--text-h4);
-}
-
-.step p {
-  color: var(--text-secondary);
-}
-
-.step:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-/* --------------------------------------------------------------------------
-   Case studies
-   -------------------------------------------------------------------------- */
-
-.cases {
-  background:
-    radial-gradient(ellipse 50% 40% at 80% 10%, rgba(0, 239, 169, 0.05), transparent 50%),
-    var(--color-black-deep);
-}
-
-.case--featured {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 0;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: var(--surface-raised);
-  box-shadow: var(--shadow-lg);
-  margin-bottom: var(--space-6);
-}
-
-.case__media {
-  position: relative;
-  min-height: 420px;
-}
-
-.case__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.case__media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 60%, rgba(24, 24, 40, 0.55));
-}
-
-.case__media-meta {
-  position: absolute;
-  left: var(--space-5);
-  bottom: var(--space-5);
-  z-index: 1;
-  padding: var(--space-4);
-  display: grid;
-  gap: 4px;
-}
-
-.case__media-meta span {
-  font-size: var(--text-label);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-}
-
-.case__body {
-  padding: var(--space-7);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
-
-.case__blocks {
-  display: grid;
-  gap: var(--space-4);
-}
-
-.case__blocks h4 {
-  color: var(--color-gold);
-  font-size: var(--text-label);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  margin-bottom: var(--space-2);
-}
-
-.case__blocks p {
-  color: var(--text-secondary);
-  font-size: var(--text-caption);
-}
-
-.case__metrics {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-3);
-  padding-block: var(--space-4);
-  border-block: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.case__metrics strong {
-  display: block;
-  font-size: 1.35rem;
-  color: var(--color-teal);
-  margin-bottom: 4px;
-}
-
-.case__metrics span {
-  font-size: 0.7rem;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-}
-
-.case__quote {
-  border-left: 2px solid var(--color-gold);
-  padding-left: var(--space-4);
-}
-
-.case__quote p {
-  font-size: var(--text-body-lg);
-  margin-bottom: var(--space-3);
-}
-
-.case__quote footer {
-  color: var(--text-tertiary);
-  font-size: var(--text-caption);
-}
-
-.case-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-5);
-}
-
-.case-card {
-  overflow: hidden;
-}
-
-.case-card img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  transition: transform var(--duration-slow) var(--ease-out);
-}
-
-.case-card:hover img {
-  transform: scale(1.04);
-}
-
-.case-card__body {
-  padding: var(--space-5);
-}
-
-.case-card h3 {
-  font-size: var(--text-h4);
-  margin-bottom: var(--space-2);
-}
-
-.case-card p {
-  color: var(--text-secondary);
-  font-size: var(--text-caption);
-  margin-bottom: var(--space-4);
-}
-
-.case-card__stats {
-  display: flex;
-  gap: var(--space-5);
-  font-size: var(--text-caption);
-  color: var(--text-tertiary);
-}
-
-.case-card__stats strong {
-  color: var(--color-gold);
-  margin-right: 4px;
-}
-
-/* --------------------------------------------------------------------------
-   Social / testimonials
-   -------------------------------------------------------------------------- */
-
-.social {
-  background: var(--color-black);
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-  margin-bottom: var(--space-8);
-}
-
-.testimonial {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.testimonial:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(240, 201, 74, 0.2);
-}
-
-.testimonial__stars {
-  color: var(--color-gold);
-  letter-spacing: 2px;
-}
-
-.testimonial blockquote p {
-  color: var(--text-secondary);
-  font-size: var(--text-body-lg);
-  line-height: var(--leading-relaxed);
-}
-
-.testimonial figcaption {
-  margin-top: auto;
-  display: grid;
-  gap: 4px;
-  padding-top: var(--space-4);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.testimonial figcaption span {
-  color: var(--text-tertiary);
-  font-size: var(--text-caption);
-}
-
-.awards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-4);
-}
-
-.awards li {
-  text-align: center;
-  padding: var(--space-5);
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.awards strong {
-  display: block;
-  font-size: 1.25rem;
-  color: var(--color-gold);
-  margin-bottom: var(--space-2);
-}
-
-.awards span {
-  font-size: var(--text-caption);
-  color: var(--text-tertiary);
-}
-
-/* --------------------------------------------------------------------------
-   Pricing
-   -------------------------------------------------------------------------- */
-
-.pricing {
-  background:
-    radial-gradient(ellipse 50% 40% at 50% 0%, rgba(240, 201, 74, 0.08), transparent 55%),
-    var(--color-black-deep);
-}
-
-.pricing-cards {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--space-5);
-  align-items: stretch;
-  margin-bottom: var(--space-9);
-}
-
-.price-card {
-  position: relative;
-  padding: var(--space-7);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.price-card--featured {
-  border-color: rgba(240, 201, 74, 0.35);
-  box-shadow: var(--shadow-lg), var(--shadow-glow-gold);
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(240, 201, 74, 0.1), transparent 60%),
-    var(--surface-raised);
-}
-
-.price-card__ribbon {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
-  padding: 0.3rem 0.7rem;
-  border-radius: var(--radius-full);
-  background: var(--color-gold);
-  color: var(--color-black);
-  font-size: var(--text-label);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-}
-
-.price-card__tagline {
-  color: var(--text-tertiary);
-}
-
-.price-card__price {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-  padding-block: var(--space-3);
-}
-
-.price-card__amount {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--tracking-tight);
-  color: var(--color-gold);
-}
-
-.price-card__amount--muted {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  color: var(--text-tertiary);
-}
-
-.price-card__note {
-  color: var(--text-secondary);
-}
-
-.price-card__runner {
-  color: var(--text-secondary);
-  font-size: var(--text-caption);
-}
-
-.price-card .checklist {
-  flex: 1;
-  margin-bottom: var(--space-4);
-}
-
-.feature-matrix__title {
-  font-size: var(--text-h4);
-  margin-bottom: var(--space-5);
-  text-align: center;
-}
-
-.table-wrap {
-  overflow-x: auto;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.compare-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 640px;
-}
-
-.compare-table th,
-.compare-table td {
-  padding: var(--space-4);
-  text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: var(--text-caption);
-}
-
-.compare-table thead th {
-  background: rgba(255, 255, 255, 0.03);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  font-size: var(--text-label);
-}
-
-.compare-table tbody th {
-  text-align: left;
-  font-weight: var(--font-weight-regular);
-  color: var(--text-secondary);
-}
-
-.compare-table .is-highlight {
-  background: rgba(240, 201, 74, 0.06);
-  color: var(--color-gold);
-}
-
-.compare-table .check {
-  color: var(--color-teal);
-  font-weight: var(--font-weight-bold);
-}
-
-.compare-table .dash {
-  color: var(--text-tertiary);
-}
-
-/* --------------------------------------------------------------------------
-   CTA / Form
-   -------------------------------------------------------------------------- */
-
-.cta-band {
-  background:
-    linear-gradient(135deg, rgba(240, 201, 74, 0.08), transparent 40%),
-    linear-gradient(225deg, rgba(0, 239, 169, 0.08), transparent 40%),
-    var(--color-black);
-}
-
-.cta-band__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
-  align-items: center;
-}
-
-.demo-form {
-  position: relative;
-  display: grid;
-  gap: var(--space-4);
-}
-
-.field {
-  position: relative;
-}
-
-.field input,
-.field select {
-  width: 100%;
-  min-height: 56px;
-  padding: 1.35rem var(--space-4) 0.55rem;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(0, 0, 0, 0.28);
-  transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
-  appearance: none;
-}
-
-.field select {
-  padding-top: 1.45rem;
-  cursor: pointer;
-}
-
-.field label {
-  position: absolute;
-  left: var(--space-4);
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-tertiary);
-  pointer-events: none;
-  transition: all var(--duration-fast) var(--ease-out);
-  font-size: var(--text-body);
-}
-
-.field input:focus,
-.field select:focus {
-  border-color: var(--color-gold);
-  box-shadow: 0 0 0 3px rgba(240, 201, 74, 0.15);
-  outline: none;
-}
-
-.field input:focus + label,
-.field input:not(:placeholder-shown) + label,
-.field select:focus + label,
-.field select:valid + label {
-  top: 0.7rem;
-  transform: none;
-  font-size: var(--text-label);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--color-gold);
-}
-
-.field.is-invalid input,
-.field.is-invalid select {
-  border-color: #ff6b6b;
-}
-
-.field__error {
-  display: block;
-  min-height: 1.1em;
-  margin-top: 4px;
-  font-size: var(--text-label);
-  color: #ff8e8e;
-}
-
-.form-note {
-  text-align: center;
-  font-size: var(--text-label);
-  color: var(--text-tertiary);
-}
-
-.form-success {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  gap: var(--space-3);
-  background: rgba(18, 18, 27, 0.96);
-  border-radius: inherit;
-  padding: var(--space-6);
-  animation: scaleIn var(--duration-base) var(--ease-out);
-}
-
-.form-success__icon {
-  width: 56px;
-  height: 56px;
-  margin-inline: auto;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: rgba(0, 239, 169, 0.15);
-  color: var(--color-teal);
-  font-size: 1.5rem;
-  font-weight: var(--font-weight-bold);
-}
-
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.94); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* --------------------------------------------------------------------------
-   FAQ
-   -------------------------------------------------------------------------- */
-
-.faq {
+  position: relative; z-index: 2; width: min(100% - 2rem, var(--container));
+  margin: var(--space-8) auto 0; display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem;
+}
+.metric-card {
+  padding: 1.25rem 1.25rem 1.1rem; border-radius: var(--radius-lg);
+  background: rgba(255,255,255,.07); border: 1px solid var(--surface-glass-border);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: var(--shadow-md);
+}
+.metric-card__value {
+  display: block; font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 800;
+  color: var(--color-gold); line-height: 1;
+}
+.metric-card__label {
+  display: block; margin-top: .4rem; color: var(--text-secondary);
+  font-size: .75rem; letter-spacing: .06em; text-transform: uppercase;
+}
+.metric-card__live {
+  display: inline-flex; align-items: center; gap: .35rem; margin-top: .55rem;
+  font-size: .7rem; color: var(--color-teal); text-transform: uppercase; letter-spacing: .08em; font-weight: 800;
+}
+.metric-card__live i {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--color-teal);
+  box-shadow: 0 0 0 0 rgba(0,239,169,.6); animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  70% { box-shadow: 0 0 0 8px rgba(0,239,169,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,239,169,0); }
+}
+.float-a { animation: floaty 7s ease-in-out infinite; }
+.float-b { animation: floaty 8s ease-in-out infinite .4s; }
+.float-c { animation: floaty 7.5s ease-in-out infinite .8s; }
+.float-d { animation: floaty 9s ease-in-out infinite 1.1s; }
+@keyframes floaty {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* LIVE TICKER */
+.tick {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
+  display: grid; grid-template-columns: auto 1fr; align-items: center;
+  background: rgba(11,11,18,.82); border-top: 1px solid rgba(255,255,255,.1);
+  backdrop-filter: blur(12px);
+}
+.tick-lab {
+  display: flex; align-items: center; gap: .5rem; padding: .85rem 1.1rem;
+  font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 800; color: var(--color-teal);
+  border-right: 1px solid rgba(255,255,255,.1); white-space: nowrap;
+}
+.tick-lab .dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--color-teal);
+  animation: pulse 1.8s infinite;
+}
+.tick-track { overflow: hidden; }
+.tick-row {
+  display: flex; gap: 1.5rem; padding: .85rem 1rem; width: max-content;
+  animation: ticker 36s linear infinite;
+}
+.tick-item { font-variant-numeric: tabular-nums; color: var(--text-secondary); font-size: .875rem; white-space: nowrap; }
+.tick-item b { color: #fff; margin-right: .45rem; }
+.tick-item u { text-decoration: none; color: var(--color-gold); margin-right: .35rem; font-weight: 800; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* BIBS */
+.bibs {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem;
+  margin-top: -2.5rem; position: relative; z-index: 4;
+}
+.bib {
+  position: relative; padding: 1.35rem 1.25rem 1.25rem;
+  border-radius: var(--radius-lg); background: var(--color-black-elevated);
+  border: 1px solid var(--surface-glass-border); box-shadow: var(--shadow-lg); overflow: hidden;
+}
+.bib::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--gradient-gold);
+}
+.bib-band {
+  display: flex; justify-content: space-between; gap: .5rem;
+  font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: .75rem;
+}
+.bib-num { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 800; color: var(--color-gold); line-height: 1; }
+.bib-lab { margin-top: .4rem; color: var(--text-secondary); font-size: .8rem; }
+
+/* CASE STUDIES */
+.proof-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+.pcard {
+  border-radius: var(--radius-xl); overflow: hidden; background: var(--color-black-elevated);
+  border: 1px solid var(--surface-glass-border); box-shadow: var(--shadow-md);
+  display: flex; flex-direction: column;
+}
+.pcard > img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.pcard-in { padding: 1.35rem; display: grid; gap: .55rem; flex: 1; }
+.prog {
+  display: flex; align-items: center; gap: .75rem; color: var(--text-secondary); font-size: .8rem;
+}
+.prog .n { display: block; font-size: 1.25rem; font-weight: 800; color: #fff; }
+.prog .y { color: var(--text-tertiary); }
+.prog .ar { color: var(--color-teal); font-weight: 800; }
+.pcard-big { font-size: 2rem; font-weight: 800; color: var(--color-teal); line-height: 1; }
+.pcard-sub { color: var(--text-secondary); font-size: .875rem; }
+.pcard-tag {
+  display: inline-block; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--color-gold); border: 1px solid rgba(240,201,74,.35); padding: .35rem .55rem; border-radius: 4px; width: fit-content;
+}
+.pcard h3 { font-size: 1.2rem; }
+.pcard h3 a:hover { color: var(--color-gold); }
+.pcard p { color: var(--text-secondary); font-size: .9rem; }
+.full { color: var(--color-gold); font-weight: 800; font-size: .875rem; margin-top: .35rem; }
+.full:hover { text-decoration: underline; }
+.proof-disc { margin-top: 1.5rem; color: var(--text-tertiary); font-size: .875rem; max-width: 70ch; }
+
+/* OUTCOMES */
+.outs { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+.out {
+  padding: 1.5rem; border-radius: var(--radius-lg); background: var(--surface-glass);
+  border: 1px solid var(--surface-glass-border);
+}
+.out-n { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-gold); font-weight: 800; margin-bottom: .75rem; }
+.out h3 { margin-bottom: .5rem; font-size: 1.25rem; }
+.out p { color: var(--text-secondary); }
+
+/* SERVICE */
+.service { background: linear-gradient(180deg, var(--color-black) 0%, var(--color-black-elevated) 100%); }
+.prod-cap {
+  margin: 0 0 1.5rem; padding: 1rem 1.25rem; border-left: 3px solid var(--color-teal);
+  color: var(--text-secondary); background: rgba(0,239,169,.06); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+.col {
+  padding: 1.75rem 1.5rem; border-radius: var(--radius-xl); background: var(--color-black-soft);
+  border: 1px solid var(--surface-glass-border); box-shadow: var(--shadow-md);
+}
+.col.start { border-color: rgba(240,201,74,.45); box-shadow: var(--shadow-glow-gold); }
+.col-n {
+  font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--color-teal);
+  font-weight: 800; margin-bottom: .75rem; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
+}
+.col-flag {
+  background: var(--gradient-gold); color: #12121b; padding: .2rem .45rem; border-radius: 4px;
+  letter-spacing: .04em; font-size: .65rem;
+}
+.col h3 { font-size: 1.35rem; margin-bottom: .6rem; }
+.col-lede { color: var(--text-secondary); margin-bottom: 1rem; font-size: .95rem; }
+.ul { display: grid; gap: .55rem; }
+.ul li {
+  color: var(--text-secondary); padding-left: 1.1rem; position: relative; font-size: .9rem;
+}
+.ul li::before {
+  content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px;
+  border-radius: 2px; background: var(--color-gold);
+}
+.owner { margin-top: 1.5rem; color: var(--text-tertiary); font-size: .9rem; }
+
+/* PHOTO BAND */
+.band {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: .5rem; padding: .5rem;
   background: var(--color-black-deep);
 }
-
-.faq__tabs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-2);
-  margin-bottom: var(--space-6);
+.band figure { position: relative; overflow: hidden; min-height: 220px; }
+.band img { width: 100%; height: 100%; object-fit: cover; min-height: 220px; transition: transform .5s var(--ease); }
+.band figure:hover img { transform: scale(1.04); }
+.band figcaption {
+  position: absolute; left: .75rem; bottom: .75rem; font-size: .7rem; letter-spacing: .1em;
+  text-transform: uppercase; font-weight: 800; color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.7);
 }
 
-.faq__tab {
-  min-height: 40px;
-  padding: 0.55rem 1rem;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: transparent;
-  color: var(--text-secondary);
-  cursor: pointer;
-  font-size: var(--text-caption);
-  transition: all var(--duration-fast) var(--ease-out);
+/* COVERAGE */
+.cov { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2rem; align-items: start; }
+.cities { display: grid; gap: .75rem; }
+.city {
+  padding: 1rem 1.1rem; border-radius: var(--radius-md); border: 1px solid var(--surface-glass-border);
+  background: var(--surface-glass); display: flex; flex-direction: column; gap: .2rem;
+  transition: border-color .2s, transform .2s;
+}
+.city:hover { border-color: rgba(240,201,74,.4); transform: translateY(-2px); }
+.city b { font-size: 1.1rem; }
+.city span { color: var(--text-tertiary); font-size: .85rem; }
+.cov-sweet {
+  margin-top: 1rem; padding: 1.25rem; border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(240,201,74,.12), rgba(0,239,169,.08));
+  border: 1px solid rgba(240,201,74,.25);
+}
+.cov-sweet b { display: block; font-size: 1.75rem; color: var(--color-gold); margin-bottom: .35rem; }
+.cov-sweet span { color: var(--text-secondary); font-size: .9rem; }
+.cov-suit p { color: var(--text-secondary); margin-bottom: .75rem; font-weight: 700; }
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.chips span {
+  font-size: .75rem; letter-spacing: .04em; color: var(--text-secondary);
+  border: 1px solid var(--surface-glass-border); background: rgba(0,0,0,.25);
+  padding: .45rem .7rem; border-radius: 4px;
 }
 
-.faq__tab:hover {
-  border-color: rgba(240, 201, 74, 0.35);
-  color: var(--color-white);
+/* OPS */
+.ops { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+.op {
+  padding: 1.5rem; border-radius: var(--radius-lg); background: var(--surface-glass);
+  border: 1px solid var(--surface-glass-border);
+}
+.op > b { display: block; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--color-teal); margin-bottom: .75rem; }
+.op h3 { font-size: 1.15rem; margin-bottom: .55rem; }
+.op p { color: var(--text-secondary); font-size: .95rem; }
+.ops-more { margin-top: 1.5rem; }
+.ops-more a { color: var(--color-gold); font-weight: 800; }
+
+/* PRICING */
+.tiers { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
+.tier {
+  padding: 1.5rem; border-radius: var(--radius-xl); background: var(--color-black-elevated);
+  border: 1px solid var(--surface-glass-border); display: flex; flex-direction: column; gap: .7rem;
+  transition: transform .25s var(--ease), box-shadow .25s;
+}
+.tier:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.tier.feat {
+  border-color: rgba(240,201,74,.55);
+  background: linear-gradient(180deg, rgba(240,201,74,.08), transparent 40%), var(--color-black-soft);
+  box-shadow: var(--shadow-lg);
+}
+.tier-lab { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-teal); font-weight: 800; }
+.tier h3 { font-size: 1.2rem; }
+.price { font-size: clamp(1.75rem, 3vw, 2.35rem); font-weight: 800; color: var(--color-gold); line-height: 1.1; }
+.price-sub { color: var(--text-tertiary); font-size: .8rem; line-height: 1.4; }
+.tier > p { color: var(--text-secondary); font-size: .9rem; }
+.tier-note-diy { font-size: .8rem; color: var(--text-tertiary); }
+.tier-note-diy a { color: var(--color-gold); font-weight: 700; }
+.price-band {
+  margin-top: 1.75rem; padding: 1.25rem 1.5rem; border-radius: var(--radius-lg);
+  border: 1px solid var(--surface-glass-border); background: var(--surface-glass);
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;
 }
 
-.faq__tab.is-active {
-  background: rgba(240, 201, 74, 0.12);
-  border-color: rgba(240, 201, 74, 0.4);
-  color: var(--color-gold);
+/* TRUST LOGOS */
+.trust { text-align: center; }
+.trust > p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+.logos {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; align-items: center;
 }
-
-.faq__list {
-  display: grid;
-  gap: var(--space-3);
+.logo-ph {
+  height: 72px; display: grid; place-items: center; padding: .75rem;
+  border-radius: var(--radius-md); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
 }
+.logo-ph img { max-height: 48px; width: auto; max-width: 100%; object-fit: contain; filter: brightness(1.05); }
 
-.faq-item {
-  padding: 0;
-  overflow: hidden;
+/* FORM */
+.lead-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 2.5rem; align-items: start; }
+.lead-copy { color: var(--text-secondary); margin: .75rem 0 1.25rem; max-width: 40ch; }
+.lead-pts { display: grid; gap: .65rem; color: var(--text-secondary); }
+.lead-pts li { padding-left: 1.2rem; position: relative; }
+.lead-pts li::before {
+  content: "✓"; position: absolute; left: 0; color: var(--color-teal); font-weight: 800;
 }
-
-.faq-item summary {
-  list-style: none;
-  cursor: pointer;
-  padding: var(--space-5);
-  font-weight: var(--font-weight-bold);
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-4);
-  align-items: center;
+.form {
+  padding: 1.75rem; border-radius: var(--radius-xl); background: var(--surface-glass);
+  border: 1px solid var(--surface-glass-border); backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-lg);
 }
-
-.faq-item summary::-webkit-details-marker { display: none; }
-
-.faq-item summary::after {
-  content: "+";
-  color: var(--color-gold);
-  font-size: 1.25rem;
-  transition: transform var(--duration-fast);
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field { display: grid; gap: .4rem; margin-bottom: 1rem; }
+.field > label, .field > .label {
+  font-size: .8rem; color: var(--text-secondary);
 }
-
-.faq-item[open] summary::after {
-  transform: rotate(45deg);
+.field input, .field select, .field textarea {
+  width: 100%; padding: .8rem .9rem; border-radius: var(--radius-md);
+  border: 1px solid var(--surface-glass-border); background: rgba(0,0,0,.35); color: #fff;
 }
-
-.faq-item p {
-  padding: 0 var(--space-5) var(--space-5);
-  color: var(--text-secondary);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding-top: var(--space-4);
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-color: var(--color-gold); box-shadow: 0 0 0 3px rgba(240,201,74,.18);
 }
-
-/* --------------------------------------------------------------------------
-   Guide
-   -------------------------------------------------------------------------- */
-
-.guide {
-  background: var(--color-black);
+.field textarea { min-height: 100px; resize: vertical; }
+.checks { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
+.check {
+  display: flex; align-items: center; gap: .45rem; font-size: .85rem; color: var(--text-secondary);
+  padding: .45rem .55rem; border-radius: 6px; border: 1px solid transparent;
 }
-
-.guide__card {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: var(--space-6);
-  align-items: center;
-  overflow: hidden;
-  border-color: rgba(240, 201, 74, 0.2);
+.check:hover { border-color: rgba(255,255,255,.1); }
+.check input { accent-color: var(--color-gold); }
+.done {
+  display: none; margin-top: 1rem; padding: 1rem; border-radius: var(--radius-md);
+  background: rgba(0,239,169,.12); border: 1px solid rgba(0,239,169,.35); color: var(--color-teal);
 }
+.done.is-visible { display: block; }
+.form-note { margin-top: .85rem; color: var(--text-tertiary); font-size: .8rem; }
 
-.guide__copy h2 {
-  font-size: var(--text-h3);
-  margin-bottom: var(--space-4);
+/* STORY */
+.story { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.story-card {
+  border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--surface-glass-border);
+  background: var(--color-black-elevated); box-shadow: var(--shadow-md);
 }
+.story-card > img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.story-in { padding: 1.5rem; display: grid; gap: .5rem; }
+.story-stat { font-size: 2.5rem; font-weight: 800; color: var(--color-gold); line-height: 1; }
+.story-stat-lab { color: var(--text-tertiary); font-size: .85rem; }
+.story-in h3 { font-size: 1.25rem; }
+.story-in p { color: var(--text-secondary); font-size: .95rem; }
 
-.guide__copy p:not(.eyebrow) {
-  color: var(--text-secondary);
-  margin-bottom: var(--space-5);
+/* RESOURCES */
+.res { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+.resc {
+  display: grid; gap: .45rem; padding: 1.25rem; border-radius: var(--radius-lg);
+  border: 1px solid var(--surface-glass-border); background: var(--surface-glass);
+  transition: border-color .2s, transform .2s;
 }
+.resc:hover { border-color: rgba(0,239,169,.4); transform: translateY(-3px); }
+.resc b { font-size: 1.05rem; }
+.resc span { color: var(--text-secondary); font-size: .875rem; }
 
-.guide__visual {
-  border-radius: var(--radius-md);
-  overflow: hidden;
+/* NEXT */
+.next {
+  background: linear-gradient(135deg, rgba(240,201,74,.1), rgba(0,239,169,.08)), var(--color-black);
+  border-block: 1px solid var(--surface-glass-border);
 }
-
-.guide__visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  min-height: 200px;
+.next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.next-card {
+  border-radius: var(--radius-xl); padding: 2rem; border: 1px solid var(--surface-glass-border);
+  background: var(--color-black-elevated); transition: transform .25s, border-color .25s;
 }
+.next-card:hover { transform: translateY(-4px); border-color: rgba(240,201,74,.4); }
+.next-card.teal:hover { border-color: rgba(0,239,169,.45); }
+.next-card h3 { margin-bottom: .5rem; }
+.next-card p { color: var(--text-secondary); margin-bottom: 1rem; }
+.next-btn { color: var(--color-gold); font-weight: 800; }
+.next-card.teal .next-btn { color: var(--color-teal); }
 
-/* --------------------------------------------------------------------------
-   Footer
-   -------------------------------------------------------------------------- */
-
+/* FOOTER */
 .site-footer {
-  background: #08080e;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: #08080e; border-top: 1px solid rgba(255,255,255,.06);
   padding-block: var(--space-10) var(--space-6);
 }
-
-.footer__top {
-  display: grid;
-  grid-template-columns: 1.2fr 1.5fr;
-  gap: var(--space-9);
-  margin-bottom: var(--space-9);
+.foot-grid {
+  display: grid; grid-template-columns: 1.4fr repeat(4,1fr); gap: 2rem; margin-bottom: 2rem;
+}
+.site-footer .logo { font-weight: 800; font-size: 1.25rem; display: inline-block; margin-bottom: .75rem; }
+.site-footer .logo span { color: var(--color-gold); }
+.foot-grid > div > p { color: var(--text-tertiary); font-size: .875rem; max-width: 28ch; }
+.foot-grid h4 {
+  font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-gold); margin-bottom: .9rem;
+}
+.foot-grid ul { display: grid; gap: .55rem; }
+.foot-grid a { color: var(--text-tertiary); font-size: .85rem; }
+.foot-grid a:hover { color: #fff; }
+.foot-bot {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem;
+  padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,.06);
+  color: var(--text-tertiary); font-size: .8rem;
 }
 
-.footer__brand p {
-  color: var(--text-tertiary);
-  margin: var(--space-4) 0 var(--space-5);
-  max-width: 28rem;
-}
-
-.newsletter {
-  display: flex;
-  gap: var(--space-2);
-  max-width: 360px;
-}
-
-.newsletter input {
-  flex: 1;
-  min-height: 44px;
-  padding: 0 var(--space-4);
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.footer__cols {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-}
-
-.footer__cols h3 {
-  font-size: var(--text-label);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--color-gold);
-  margin-bottom: var(--space-4);
-}
-
-.footer__cols ul {
-  display: grid;
-  gap: var(--space-3);
-}
-
-.footer__cols a {
-  color: var(--text-tertiary);
-  font-size: var(--text-caption);
-  transition: color var(--duration-fast);
-}
-
-.footer__cols a:hover {
-  color: var(--color-white);
-}
-
-.footer__bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-4);
-  padding-top: var(--space-5);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  color: var(--text-tertiary);
-  font-size: var(--text-caption);
-}
-
-.footer__social {
-  display: flex;
-  gap: var(--space-3);
-}
-
-.footer__social a {
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-secondary);
-  font-size: var(--text-label);
-  font-weight: var(--font-weight-bold);
-  transition: all var(--duration-fast);
-}
-
-.footer__social a:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  transform: translateY(-2px);
-}
-
-/* --------------------------------------------------------------------------
-   Reveal animations
-   -------------------------------------------------------------------------- */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity var(--duration-slow) var(--ease-out),
-    transform var(--duration-slow) var(--ease-out);
-  transition-delay: var(--delay, 0s);
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* Noise texture overlay on dark sections */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
-}
-
-/* --------------------------------------------------------------------------
-   Responsive — mobile-first rethink
-   -------------------------------------------------------------------------- */
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: none; }
+[data-reveal] { transition-delay: var(--delay, 0s); }
 
 @media (max-width: 1100px) {
-  .hero__stats {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    margin: var(--space-8) auto 0;
-    width: min(100% - (var(--section-pad-x) * 2), var(--container));
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .hero {
-    padding-bottom: var(--space-8);
-  }
-
-  .hero__content {
-    margin-left: auto;
-  }
-
-  .hero__scroll { display: none; }
-}
-
-@media (max-width: 960px) {
-  .nav__toggle {
-    display: flex;
-    position: relative;
-    z-index: calc(var(--z-nav) + 2);
-  }
-
+  .hero__stats, .bibs, .proof-grid, .outs, .cols, .ops, .tiers, .res, .logos { grid-template-columns: repeat(2,1fr); }
+  .cov, .lead-grid, .story, .next-grid, .band { grid-template-columns: 1fr 1fr; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .nav__links { display: none; }
+  .nav__toggle { display: flex; }
   .nav__menu {
-    position: fixed;
-    inset: 0;
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    gap: var(--space-6);
-    padding: 6rem var(--space-6) var(--space-8);
-    border-radius: 0;
-    background: rgba(8, 8, 14, 0.98);
-    backdrop-filter: blur(24px);
-    border: 0;
-    box-shadow: none;
-    z-index: calc(var(--z-nav) + 1);
+    position: fixed; inset: 0; background: rgba(8,8,14,.96); backdrop-filter: blur(20px);
+    flex-direction: column; justify-content: center; align-items: center; gap: 2rem;
+    opacity: 0; pointer-events: none; transition: opacity .25s;
   }
-
-  .nav__menu.is-open { display: flex; }
-
-  .nav__links {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-2);
-  }
-
-  .nav__link {
-    display: block;
-    padding: var(--space-3);
-    font-size: var(--text-body);
-  }
-
-  .nav__actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .problem__grid,
-  .showcase__row,
-  .showcase__row--reverse,
-  .case--featured,
-  .cta-band__grid,
-  .pricing-cards,
-  .footer__top,
-  .guide__card {
-    grid-template-columns: 1fr;
-    direction: ltr;
-  }
-
-  .trust-bar__grid,
-  .steps,
-  .testimonial-grid,
-  .awards,
-  .case-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero__stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .case__metrics {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .float-window {
-    left: var(--space-3);
-    bottom: var(--space-3);
-  }
-
-  .mock-dash {
-    grid-template-columns: 1fr;
-  }
-
-  .mock-dash__side { display: none; }
-}
-
-@media (max-width: 640px) {
-  .hero {
-    min-height: auto;
-    padding-top: 5.5rem;
-    padding-bottom: var(--space-7);
-  }
-
-  .hero__title {
-    max-width: none;
-  }
-
-  .hero__cta {
-    flex-direction: column;
-  }
-
-  .hero__cta .btn {
-    width: 100%;
-  }
-
-  .hero__stats,
-  .trust-bar__grid,
-  .steps,
-  .testimonial-grid,
-  .awards,
-  .case-grid,
-  .footer__cols {
-    grid-template-columns: 1fr;
-  }
-
-  .metric-card {
-    min-width: 0;
-  }
-
-  .case__media {
-    min-height: 260px;
-  }
-
-  .footer__bottom {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .newsletter {
-    flex-direction: column;
-  }
-
-  .price-card__ribbon {
-    position: static;
-    align-self: flex-start;
-  }
-}
-/* ===== Reference-structure additions (premium design system) ===== */
-.ticker {
-  background: var(--color-black-elevated);
-  border-block: 1px solid var(--surface-glass-border);
-  overflow: hidden;
-  white-space: nowrap;
-}
-.ticker__track {
-  display: inline-flex;
-  gap: var(--space-10);
-  padding: var(--space-3) 0;
-  animation: ticker 40s linear infinite;
-}
-.ticker__item {
-  font-size: var(--text-caption);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-}
-.ticker__item strong { color: var(--color-gold); font-weight: 800; }
-.ticker__dot { color: var(--color-teal); margin-inline: var(--space-2); }
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.bib-stats {
-  background:
-    radial-gradient(ellipse 60% 50% at 10% 20%, rgba(240,201,74,.08), transparent 50%),
-    radial-gradient(ellipse 50% 40% at 90% 80%, rgba(0,239,169,.08), transparent 50%),
-    var(--color-black);
-}
-.bib-stats__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-4);
-}
-.bib-card {
-  padding: var(--space-6);
-  border-radius: var(--radius-lg);
-  background: var(--surface-glass);
-  border: 1px solid var(--surface-glass-border);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: var(--shadow-md);
-  position: relative;
-  overflow: hidden;
-}
-.bib-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: var(--gradient-gold);
-}
-.bib-card__num {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  color: var(--color-gold);
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-.bib-card__label {
-  display: block;
-  margin-top: var(--space-2);
-  color: var(--text-secondary);
-  font-size: var(--text-caption);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.product-compose {
-  background: var(--color-black-deep);
-}
-.product-compose__stage {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: var(--space-6);
-  align-items: end;
-  margin-top: var(--space-8);
-}
-.prod-dash, .prod-phone, .prod-photo {
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  border: 1px solid var(--surface-glass-border);
-  box-shadow: var(--shadow-lg);
-  background: var(--color-black-elevated);
-}
-.prod-dash img, .prod-photo img { width: 100%; height: 100%; object-fit: cover; }
-.prod-phone {
-  max-width: 280px;
-  margin-inline: auto;
-  aspect-ratio: 9/16;
-}
-.prod-phone img { width: 100%; height: 100%; object-fit: cover; }
-.product-compose__stack {
-  display: grid;
-  gap: var(--space-4);
-}
-
-.outcomes__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-}
-.outcome {
-  padding: var(--space-6);
-  border-radius: var(--radius-lg);
-  background: var(--surface-glass);
-  border: 1px solid var(--surface-glass-border);
-}
-.outcome__icon {
-  width: 40px; height: 40px;
-  display: grid; place-items: center;
-  border-radius: var(--radius-md);
-  background: rgba(0,239,169,.12);
-  color: var(--color-teal);
-  font-weight: 800;
-  margin-bottom: var(--space-4);
-}
-.outcome h3 { margin-bottom: var(--space-2); font-size: var(--text-h4); }
-.outcome p { color: var(--text-secondary); }
-
-.service-model {
-  background: linear-gradient(180deg, var(--color-black) 0%, var(--color-black-elevated) 100%);
-}
-.service-model__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-}
-.service-col {
-  padding: var(--space-7) var(--space-6);
-  border-radius: var(--radius-xl);
-  background: var(--color-black-soft);
-  border: 1px solid var(--surface-glass-border);
-  box-shadow: var(--shadow-md);
-}
-.service-col__step {
-  font-size: var(--text-label);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-teal);
-  font-weight: 800;
-  margin-bottom: var(--space-3);
-}
-.service-col h3 { font-size: var(--text-h3); margin-bottom: var(--space-3); }
-.service-col p { color: var(--text-secondary); margin-bottom: var(--space-4); }
-.service-col ul { display: grid; gap: var(--space-2); }
-.service-col li {
-  color: var(--text-secondary);
-  padding-left: var(--space-5);
-  position: relative;
-}
-.service-col li::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0.55em;
-  width: 8px; height: 8px;
-  border-radius: 2px;
-  background: var(--color-gold);
-}
-
-.coverage {
-  background: var(--color-black-deep);
-}
-.coverage__map {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-  margin-top: var(--space-8);
-}
-.city-chip {
-  padding: var(--space-5) var(--space-4);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--surface-glass-border);
-  background: var(--surface-glass);
-  text-align: center;
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
-.city-chip:hover {
-  transform: translateY(-4px);
-  border-color: rgba(240,201,74,.45);
-  box-shadow: var(--shadow-md);
-}
-.city-chip strong {
-  display: block;
-  font-size: var(--text-h4);
-  margin-bottom: var(--space-1);
-}
-.city-chip span { color: var(--text-tertiary); font-size: var(--text-caption); }
-
-.photo-band {
-  position: relative;
-  min-height: 420px;
-  display: grid;
-  align-items: end;
-  overflow: hidden;
-}
-.photo-band__img {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-.photo-band__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(11,11,18,.2) 0%, rgba(11,11,18,.85) 100%);
-}
-.photo-band__content {
-  position: relative;
-  z-index: 1;
-  padding-block: var(--space-10);
-}
-.photo-band__content h2 { max-width: 18ch; }
-.photo-band__content p {
-  max-width: 42ch;
-  color: var(--text-secondary);
-  margin-top: var(--space-3);
-}
-
-.ops {
-  background: var(--color-black);
-}
-.ops__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
-  align-items: center;
-}
-.ops__list { display: grid; gap: var(--space-4); margin-top: var(--space-6); }
-.ops__item {
-  display: grid;
-  grid-template-columns: 48px 1fr;
-  gap: var(--space-4);
-  align-items: start;
-}
-.ops__num {
-  width: 48px; height: 48px;
-  border-radius: var(--radius-md);
-  display: grid; place-items: center;
-  font-weight: 800;
-  background: var(--gradient-gold);
-  color: var(--color-black);
-}
-.ops__item h3 { font-size: var(--text-h4); margin-bottom: var(--space-1); }
-.ops__item p { color: var(--text-secondary); }
-.ops__visual {
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  border: 1px solid var(--surface-glass-border);
-  box-shadow: var(--shadow-lg);
-}
-.ops__visual img { width: 100%; height: 100%; object-fit: cover; min-height: 360px; }
-
-.pricing-tiers {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-4);
-  margin-top: var(--space-8);
-}
-.price-card {
-  padding: var(--space-6);
-  border-radius: var(--radius-xl);
-  background: var(--color-black-elevated);
-  border: 1px solid var(--surface-glass-border);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  position: relative;
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
-.price-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-}
-.price-card--featured {
-  border-color: rgba(240,201,74,.55);
-  background:
-    linear-gradient(180deg, rgba(240,201,74,.08), transparent 40%),
-    var(--color-black-soft);
-  box-shadow: var(--shadow-lg);
-}
-.price-card__badge {
-  position: absolute;
-  top: -12px; left: 50%;
-  transform: translateX(-50%);
-  background: var(--gradient-gold);
-  color: var(--color-black);
-  font-size: var(--text-label);
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  white-space: nowrap;
-}
-.price-card__name {
-  font-size: var(--text-h4);
-  font-weight: 800;
-}
-.price-card__price {
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 800;
-  color: var(--color-gold);
-  line-height: 1.1;
-}
-.price-card__price span {
-  display: block;
-  font-size: var(--text-caption);
-  color: var(--text-tertiary);
-  font-weight: 400;
-  margin-top: var(--space-1);
-}
-.price-card__desc { color: var(--text-secondary); font-size: var(--text-caption); }
-.price-card__features {
-  display: grid;
-  gap: var(--space-2);
-  flex: 1;
-}
-.price-card__features li {
-  color: var(--text-secondary);
-  font-size: var(--text-caption);
-  padding-left: var(--space-5);
-  position: relative;
-}
-.price-card__features li::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0.45em;
-  width: 10px; height: 10px;
-  background: url("assets/icons/check.svg") center/contain no-repeat;
-}
-
-.lead-form-section {
-  background:
-    radial-gradient(ellipse 50% 40% at 80% 20%, rgba(0,239,169,.1), transparent 50%),
-    var(--color-black-deep);
-}
-.lead-form-section__grid {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: var(--space-8);
-  align-items: start;
-}
-.lead-form {
-  padding: var(--space-7);
-  border-radius: var(--radius-xl);
-  background: var(--surface-glass);
-  border: 1px solid var(--surface-glass-border);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: var(--shadow-lg);
-}
-.lead-form__row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-}
-.lead-form label {
-  display: grid;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
-  font-size: var(--text-caption);
-  color: var(--text-secondary);
-}
-.lead-form input,
-.lead-form select,
-.lead-form textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--surface-glass-border);
-  background: rgba(0,0,0,.35);
-  color: var(--text-primary);
-}
-.lead-form input:focus,
-.lead-form select:focus,
-.lead-form textarea:focus {
-  outline: none;
-  border-color: var(--color-gold);
-  box-shadow: 0 0 0 3px rgba(240,201,74,.18);
-}
-.lead-form textarea { min-height: 110px; resize: vertical; }
-.lead-form .field-error { color: #ff8a8a; font-size: 0.75rem; min-height: 1em; }
-.lead-form__success {
-  display: none;
-  padding: var(--space-4);
-  border-radius: var(--radius-md);
-  background: rgba(0,239,169,.12);
-  border: 1px solid rgba(0,239,169,.35);
-  color: var(--color-teal);
-  margin-bottom: var(--space-4);
-}
-.lead-form__success.is-visible { display: block; }
-
-.story-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  min-height: 480px;
-}
-.story-split__media {
-  position: relative;
-  min-height: 360px;
-}
-.story-split__media img {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-.story-split__copy {
-  padding: var(--space-10) var(--space-8);
-  background: var(--color-black-elevated);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.story-split__copy p { color: var(--text-secondary); margin-top: var(--space-4); max-width: 42ch; }
-
-.resources__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-}
-.resource-card {
-  display: grid;
-  gap: var(--space-3);
-  padding: var(--space-5);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--surface-glass-border);
-  background: var(--surface-glass);
-  transition: border-color .25s ease, transform .25s ease;
-}
-.resource-card:hover {
-  border-color: rgba(0,239,169,.4);
-  transform: translateY(-3px);
-}
-.resource-card__tag {
-  font-size: var(--text-label);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-teal);
-  font-weight: 800;
-}
-.resource-card h3 { font-size: var(--text-h4); }
-.resource-card p { color: var(--text-secondary); font-size: var(--text-caption); }
-
-.next-race {
-  background:
-    linear-gradient(135deg, rgba(240,201,74,.12), rgba(0,239,169,.08)),
-    var(--color-black);
-  border-block: 1px solid var(--surface-glass-border);
-  text-align: center;
-}
-.next-race h2 { margin-inline: auto; max-width: 20ch; }
-.next-race p {
-  color: var(--text-secondary);
-  margin: var(--space-4) auto var(--space-6);
-  max-width: 48ch;
-}
-.next-race__actions {
-  display: flex;
-  gap: var(--space-3);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.case-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-  margin-top: var(--space-8);
-}
-.case-card {
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  border: 1px solid var(--surface-glass-border);
-  background: var(--color-black-elevated);
-  box-shadow: var(--shadow-md);
-  display: flex;
-  flex-direction: column;
-}
-.case-card__media {
-  aspect-ratio: 16/10;
-  overflow: hidden;
-}
-.case-card__media img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform .5s ease;
-}
-.case-card:hover .case-card__media img { transform: scale(1.04); }
-.case-card__body { padding: var(--space-5); display: grid; gap: var(--space-2); flex: 1; }
-.case-card__meta {
-  font-size: var(--text-label);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  font-weight: 800;
-}
-.case-card h3 { font-size: var(--text-h4); }
-.case-card p { color: var(--text-secondary); font-size: var(--text-caption); }
-.case-card__stat {
-  margin-top: auto;
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--surface-glass-border);
-  font-weight: 800;
-  color: var(--color-teal);
-}
-
-.section-eyebrow {
-  display: inline-block;
-  font-size: var(--text-label);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-teal);
-  font-weight: 800;
-  margin-bottom: var(--space-3);
-}
-.section-head {
-  max-width: 40rem;
-  margin-bottom: var(--space-2);
-}
-.section-head p {
-  color: var(--text-secondary);
-  margin-top: var(--space-3);
-  font-size: var(--text-body-lg);
-}
-
-.hero__markets {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-top: var(--space-5);
-}
-.hero__markets span {
-  font-size: var(--text-label);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  border: 1px solid var(--surface-glass-border);
-  background: rgba(0,0,0,.35);
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-}
-
-@media (max-width: 1100px) {
-  .bib-stats__grid,
-  .pricing-tiers,
-  .case-grid,
-  .outcomes__grid,
-  .service-model__grid,
-  .resources__grid { grid-template-columns: repeat(2, 1fr); }
-  .product-compose__stage,
-  .ops__grid,
-  .lead-form-section__grid,
-  .story-split { grid-template-columns: 1fr; }
-  .coverage__map { grid-template-columns: repeat(2, 1fr); }
+  .nav__menu.is-open { opacity: 1; pointer-events: auto; }
+  .nav__menu .nav__links { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+  .nav__menu .nav__link { font-size: 1.25rem; }
 }
 @media (max-width: 720px) {
-  .bib-stats__grid,
-  .pricing-tiers,
-  .case-grid,
-  .outcomes__grid,
-  .service-model__grid,
-  .resources__grid,
-  .coverage__map,
-  .lead-form__row { grid-template-columns: 1fr; }
-  .price-card--featured { order: -1; }
-  .story-split__copy { padding: var(--space-7) var(--space-4); }
+  .hero { min-height: auto; padding-bottom: 5.5rem; align-items: center; }
+  .hero__content { padding-top: 6rem; }
+  .hero__stats, .bibs, .proof-grid, .outs, .cols, .ops, .tiers, .res, .logos,
+  .cov, .lead-grid, .story, .next-grid, .band, .f-row, .checks, .foot-grid { grid-template-columns: 1fr; }
+  .tick { grid-template-columns: 1fr; }
+  .tick-lab { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .tier.feat { order: -1; }
+  .price-band { flex-direction: column; align-items: stretch; text-align: center; }
 }
-  
-.site-footer__grid {
-  display: grid;
-  grid-template-columns: 1.4fr repeat(3, 1fr);
-  gap: var(--space-8);
-  margin-bottom: var(--space-8);
-}
-.site-footer__brand p {
-  color: var(--text-tertiary);
-  margin-top: var(--space-4);
-  max-width: 28rem;
-  font-size: var(--text-caption);
-}
-.site-footer__title {
-  font-size: var(--text-label);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  margin-bottom: var(--space-4);
-}
-.site-footer__links {
-  display: grid;
-  gap: var(--space-3);
-  color: var(--text-tertiary);
-  font-size: var(--text-caption);
-}
-.site-footer__links a { transition: color .2s ease; }
-.site-footer__links a:hover { color: var(--color-white); }
-.site-footer__bottom {
-  padding-top: var(--space-5);
-  border-top: 1px solid rgba(255,255,255,.06);
-  color: var(--text-tertiary);
-  font-size: var(--text-caption);
-}
-@media (max-width: 900px) {
-  .site-footer__grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 560px) {
-  .site-footer__grid { grid-template-columns: 1fr; }
-}
-.faq__panel[hidden] { display: none !important; }
-.faq__panel.is-active { display: block; }
-
-
-@media (prefers-reduced-motion: reduce) {
-  .ticker__track { animation: none !important; }
-  .float-a, .float-b, .float-c, .float-d { animation: none !important; }
-}
-
-
-.hero__brand {
-  display: block;
-  font-size: clamp(3.25rem, 8vw, 6rem);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  color: var(--color-gold);
-  font-weight: 800;
-  margin-bottom: var(--space-3);
-}
-.hero__title {
-  display: block;
-  font-size: clamp(1.5rem, 3.2vw, 2.25rem);
-  line-height: 1.15;
-  font-weight: 800;
-  color: var(--text-primary);
-  max-width: 22ch;
-}
-.hero__markets span {
-  border-radius: 4px;
-}
-
-</style>
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -3117,26 +561,24 @@ body::before {
       <a class="nav__brand" href="#top" aria-label="Run The Day home">
         <img src="assets/images/rtd-logo.png" alt="Run The Day" width="148" height="56" class="nav__logo" />
       </a>
-
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
         <span class="nav__toggle-bar"></span>
         <span class="nav__toggle-bar"></span>
         <span class="nav__toggle-bar"></span>
       </button>
-
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__links">
-          <li><a class="nav__link" href="#why-us">Why us</a></li>
-          <li><a class="nav__link" href="#what-we-do">What we do</a></li>
-          <li><a class="nav__link" href="#case-studies">Case studies</a></li>
+          <li><a class="nav__link" href="#outcomes">Why us</a></li>
+          <li><a class="nav__link" href="#service">What we do</a></li>
+          <li><a class="nav__link" href="#cases">Case studies</a></li>
           <li><a class="nav__link" href="#coverage">Coverage</a></li>
           <li><a class="nav__link" href="#pricing">Pricing</a></li>
           <li><a class="nav__link" href="#resources">Resources</a></li>
-          <li><a class="nav__link" href="#for-runners">For runners</a></li>
+          <li><a class="nav__link" href="#next">For runners</a></li>
         </ul>
         <div class="nav__actions">
-          <a class="btn btn--text" href="#login">Login</a>
-          <a class="btn btn--primary" href="#demo">Book Demo <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--text" href="#review">Login</a>
+          <a class="btn btn--primary" href="#review">Book Demo <span class="btn__arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
     </nav>
@@ -3146,666 +588,607 @@ body::before {
     <!-- HERO -->
     <section class="hero" id="top" aria-label="Hero">
       <div class="hero__media" data-parallax>
-        <img class="hero__bg" src="assets/images/hero-bg.webp" alt="" aria-hidden="true" fetchpriority="high" />
+        <img class="hero__bg" src="assets/images/ref/ref-00.jpg" alt="Aerial view of hundreds of runners filling the street at the Jenkintown Sunset 5K start" fetchpriority="high" />
         <div class="hero__overlay"></div>
         <div class="hero__mesh" aria-hidden="true"></div>
-        <div class="hero__particles" aria-hidden="true" id="particles"></div>
-        <div class="hero__track" aria-hidden="true"></div>
       </div>
 
       <div class="hero__content container">
         <h1 class="hero__heading reveal" data-reveal>
           <span class="hero__brand">Run The Day</span>
-          <span class="hero__title">Organizing a race is hard. We make it easier.</span>
+          <span class="hero__title">Organizing a race is hard.<br /><span class="g">Run The Day makes it easier.</span></span>
         </h1>
         <p class="hero__subtitle reveal" data-reveal>
-          Registration, chip timing, and race-day ops for events from 250 to 10,000 runners — one partner from signup to finish line.
+          Registration. Chip timing. Logistics. Promotion. Race-day operations. One experienced team that helps your race succeed.
         </p>
         <div class="hero__cta reveal" data-reveal>
-          <a class="btn btn--primary btn--lg" href="#demo">Book Demo <span class="btn__arrow" aria-hidden="true">→</span></a>
-          <a class="btn btn--secondary btn--lg" href="#pricing">View Pricing</a>
+          <a class="btn btn--primary btn--lg" href="#review">Tell us about your race <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--secondary btn--lg" href="#review">Create your race</a>
         </div>
-        <div class="hero__markets reveal" data-reveal aria-label="Primary markets">
-          <span>Philadelphia</span>
-          <span>New Jersey</span>
-          <span>Baltimore</span>
-          <span>DC</span>
-          <span>Virginia</span>
-          <span>Los Angeles</span>
-        </div>
+        <p class="hero__helper reveal" data-reveal>No commitment. Create your race website in minutes.</p>
+        <p class="hero__trust reveal" data-reveal>
+          Trusted by races with <b>250–10,000 runners</b> across Philadelphia, New Jersey, Baltimore, DC, Virginia and Los Angeles.
+        </p>
       </div>
 
       <div class="hero__stats" aria-label="Key statistics">
-        <article class="metric-card glass-card float-a reveal" data-reveal style="--delay: 0.1s">
-          <span class="metric-card__value" data-count="250" data-suffix="+">0</span>
-          <span class="metric-card__label">Races Timed</span>
+        <article class="metric-card float-a reveal" data-reveal style="--delay:.1s">
+          <span class="metric-card__value" data-count="10000" data-suffix="+">0</span>
+          <span class="metric-card__label">Races timed</span>
           <span class="metric-card__live" aria-hidden="true"><i></i> Live</span>
         </article>
-        <article class="metric-card glass-card float-b reveal" data-reveal style="--delay: 0.2s">
-          <span class="metric-card__value" data-count="100" data-suffix="K+">0</span>
-          <span class="metric-card__label">Athletes</span>
-        </article>
-        <article class="metric-card glass-card float-c reveal" data-reveal style="--delay: 0.3s">
-          <span class="metric-card__value" data-count="99.99" data-suffix="%" data-decimals="2">0</span>
-          <span class="metric-card__label">Accurate Results</span>
-        </article>
-        <article class="metric-card glass-card float-d reveal" data-reveal style="--delay: 0.4s">
+        <article class="metric-card float-b reveal" data-reveal style="--delay:.2s">
           <span class="metric-card__value" data-count="20" data-suffix="+">0</span>
-          <span class="metric-card__label">Years Experience</span>
+          <span class="metric-card__label">Years at races</span>
+        </article>
+        <article class="metric-card float-c reveal" data-reveal style="--delay:.3s">
+          <span class="metric-card__value">Millions</span>
+          <span class="metric-card__label">Finishers</span>
+        </article>
+        <article class="metric-card float-d reveal" data-reveal style="--delay:.4s">
+          <span class="metric-card__value" data-count="20" data-prefix="$" data-suffix="M+">0</span>
+          <span class="metric-card__label">Raised for causes</span>
         </article>
       </div>
 
-      <a class="hero__scroll" href="#ticker" aria-label="Scroll to content"><span></span></a>
-    </section>
-
-    <!-- LIVE TICKER -->
-    <div class="ticker" id="ticker" aria-label="Live race signals">
-      <div class="ticker__track">
-        <span class="ticker__item"><strong>LIVE</strong> Finish-line results streaming</span>
-        <span class="ticker__dot">●</span>
-        <span class="ticker__item"><strong>10,000+</strong> races supported</span>
-        <span class="ticker__dot">●</span>
-        <span class="ticker__item"><strong>$20M+</strong> raised for causes</span>
-        <span class="ticker__dot">●</span>
-        <span class="ticker__item"><strong>250–10,000</strong> runners per event</span>
-        <span class="ticker__dot">●</span>
-        <span class="ticker__item"><strong>Philly · NJ · Baltimore · DC · VA · LA</strong></span>
-        <span class="ticker__dot">●</span>
-        <span class="ticker__item"><strong>LIVE</strong> Finish-line results streaming</span>
-        <span class="ticker__dot">●</span>
-        <span class="ticker__item"><strong>10,000+</strong> races supported</span>
-        <span class="ticker__dot">●</span>
-        <span class="ticker__item"><strong>$20M+</strong> raised for causes</span>
-        <span class="ticker__dot">●</span>
-        <span class="ticker__item"><strong>250–10,000</strong> runners per event</span>
-        <span class="ticker__dot">●</span>
-        <span class="ticker__item"><strong>Philly · NJ · Baltimore · DC · VA · LA</strong></span>
-        <span class="ticker__dot">●</span>
-      </div>
-    </div>
-
-    <!-- WHY US / BIB STATS -->
-    <section class="bib-stats section-pad" id="why-us">
-      <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <span class="section-eyebrow">Why organizers choose us</span>
-          <h2>Built for race directors who refuse to juggle vendors</h2>
-          <p>One trusted partner for registration websites, professional chip timing, and the ops that keep race morning calm.</p>
-        </div>
-        <div class="bib-stats__grid" style="margin-top: var(--space-8)">
-          <article class="bib-card reveal" data-reveal>
-            <span class="bib-card__num" data-count="10000" data-suffix="+">0</span>
-            <span class="bib-card__label">Races supported</span>
-          </article>
-          <article class="bib-card reveal" data-reveal>
-            <span class="bib-card__num" data-count="20" data-prefix="$" data-suffix="M+">0</span>
-            <span class="bib-card__label">Raised for local causes</span>
-          </article>
-          <article class="bib-card reveal" data-reveal>
-            <span class="bib-card__num">250–10K</span>
-            <span class="bib-card__label">Event size sweet spot</span>
-          </article>
-          <article class="bib-card reveal" data-reveal>
-            <span class="bib-card__num" data-count="4.9" data-decimals="1" data-suffix="★">0</span>
-            <span class="bib-card__label">Average review score</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRODUCT COMPOSITION -->
-    <section class="product-compose section-pad" id="what-we-do" aria-labelledby="product-heading">
-      <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <span class="section-eyebrow">The platform</span>
-          <h2 id="product-heading">Your one-stop shop for hosting a race</h2>
-          <p>Custom registration, live results, fundraising, and race-day tools — designed to feel like race morning, not enterprise software.</p>
-        </div>
-        <div class="product-compose__stage">
-          <div class="prod-dash reveal" data-reveal data-tilt>
-            <img src="assets/images/organize.webp" alt="Race organizer dashboard and registration tools" width="960" height="640" />
-          </div>
-          <div class="product-compose__stack">
-            <div class="prod-phone reveal" data-reveal data-tilt>
-              <img src="assets/images/stats-1.webp" alt="Mobile race results experience" width="360" height="640" />
-            </div>
-            <div class="prod-photo reveal" data-reveal>
-              <img src="assets/images/stats-2.webp" alt="Finish line atmosphere" width="640" height="400" />
-            </div>
+      <div class="tick" aria-hidden="true">
+        <div class="tick-lab"><span class="dot"></span> Live results</div>
+        <div class="tick-track">
+          <div class="tick-row">
+            <div class="tick-item"><b>1321</b><u>16:42</u> 5:23/mi</div>
+            <div class="tick-item"><b>1206</b><u>16:58</u> 5:28/mi</div>
+            <div class="tick-item"><b>538</b><u>17:11</u> 5:32/mi</div>
+            <div class="tick-item"><b>405</b><u>18:04</u> 5:49/mi</div>
+            <div class="tick-item"><b>16</b><u>19:37</u> 6:19/mi</div>
+            <div class="tick-item"><b>1004</b><u>20:15</u> 6:31/mi</div>
+            <div class="tick-item"><b>471</b><u>21:02</u> 6:46/mi</div>
+            <div class="tick-item"><b>417</b><u>22:19</u> 7:11/mi</div>
+            <div class="tick-item"><b>971</b><u>24:48</u> 7:59/mi</div>
+            <div class="tick-item"><b>1346</b><u>25:03</u> 8:04/mi</div>
+            <div class="tick-item"><b>241</b><u>27:30</u> 8:51/mi</div>
+            <div class="tick-item"><b>645</b><u>29:12</u> 9:24/mi</div>
+            <div class="tick-item"><b>1321</b><u>16:42</u> 5:23/mi</div>
+            <div class="tick-item"><b>1206</b><u>16:58</u> 5:28/mi</div>
+            <div class="tick-item"><b>538</b><u>17:11</u> 5:32/mi</div>
+            <div class="tick-item"><b>405</b><u>18:04</u> 5:49/mi</div>
+            <div class="tick-item"><b>16</b><u>19:37</u> 6:19/mi</div>
+            <div class="tick-item"><b>1004</b><u>20:15</u> 6:31/mi</div>
+            <div class="tick-item"><b>471</b><u>21:02</u> 6:46/mi</div>
+            <div class="tick-item"><b>417</b><u>22:19</u> 7:11/mi</div>
+            <div class="tick-item"><b>971</b><u>24:48</u> 7:59/mi</div>
+            <div class="tick-item"><b>1346</b><u>25:03</u> 8:04/mi</div>
+            <div class="tick-item"><b>241</b><u>27:30</u> 8:51/mi</div>
+            <div class="tick-item"><b>645</b><u>29:12</u> 9:24/mi</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- OUTCOMES -->
-    <section class="section-pad" id="outcomes" style="background: var(--color-black)">
+    <!-- BIB STATS -->
+    <section class="section-pad-sm" aria-label="Company track record">
       <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <span class="section-eyebrow">Outcomes</span>
-          <h2>What changes when RTD runs the stack</h2>
-          <p>Less spreadsheet chaos. More finish-line energy. Clearer fundraising. Results runners trust.</p>
-        </div>
-        <div class="outcomes__grid" style="margin-top: var(--space-8)">
-          <article class="outcome reveal" data-reveal>
-            <div class="outcome__icon" aria-hidden="true">01</div>
-            <h3>Registration that just works</h3>
-            <p>Collect payments, waivers, shirt sizes, fundraising teams, and volunteer details automatically — no stitching tools together.</p>
-          </article>
-          <article class="outcome reveal" data-reveal>
-            <div class="outcome__icon" aria-hidden="true">02</div>
-            <h3>Timing pros on site</h3>
-            <p>Chip timing teams, mats, live results, and finish-line displays. Not just gear — people who’ve run hundreds of race mornings.</p>
-          </article>
-          <article class="outcome reveal" data-reveal>
-            <div class="outcome__icon" aria-hidden="true">03</div>
-            <h3>Hands-on race management</h3>
-            <p>From permits and course planning to shirts, marketing, and volunteers — use our free tools or let us handle it all.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICE MODEL -->
-    <section class="service-model section-pad" id="service-model">
-      <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <span class="section-eyebrow">How it works</span>
-          <h2>Three steps from idea to finish line</h2>
-          <p>Create for free, invite your community, then time the day with a crew that shows up ready.</p>
-        </div>
-        <div class="service-model__grid" style="margin-top: var(--space-8)">
-          <article class="service-col reveal" data-reveal>
-            <div class="service-col__step">Step 01</div>
-            <h3>Create your race free</h3>
-            <p>Enter race details and open registration in minutes. Fundraising can start the same day.</p>
-            <ul>
-              <li>Custom race website</li>
-              <li>Tiered pricing & capacity</li>
-              <li>Waivers & add-ons</li>
-            </ul>
-          </article>
-          <article class="service-col reveal" data-reveal>
-            <div class="service-col__step">Step 02</div>
-            <h3>Invite participants</h3>
-            <p>Runners sign up online. Registration fees go to your organization (minus a small transaction fee).</p>
-            <ul>
-              <li>Email & text tools</li>
-              <li>Fundraising teams</li>
-              <li>Mobile bib assignment</li>
-            </ul>
-          </article>
-          <article class="service-col reveal" data-reveal>
-            <div class="service-col__step">Step 03</div>
-            <h3>Time your race</h3>
-            <p>Work with us so runners see results the moment they cross the finish line.</p>
-            <ul>
-              <li>Chip timing crew</li>
-              <li>Live results boards</li>
-              <li>On-site support</li>
-            </ul>
-          </article>
+        <div class="bibs">
+          <div class="bib reveal" data-reveal>
+            <div class="bib-band"><span>Run The Day</span><span>Since 2003</span></div>
+            <div class="bib-num">10,000+</div>
+            <div class="bib-lab">Races timed</div>
+          </div>
+          <div class="bib reveal" data-reveal>
+            <div class="bib-band"><span>Run The Day</span><span>Track Record</span></div>
+            <div class="bib-num">20+</div>
+            <div class="bib-lab">Years at races</div>
+          </div>
+          <div class="bib reveal" data-reveal>
+            <div class="bib-band"><span>Run The Day</span><span>Finishers</span></div>
+            <div class="bib-num">Millions</div>
+            <div class="bib-lab">Runners crossing finish lines</div>
+          </div>
+          <div class="bib reveal" data-reveal>
+            <div class="bib-band"><span>Run The Day</span><span>Impact</span></div>
+            <div class="bib-num">$20M+</div>
+            <div class="bib-lab">Raised for causes</div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- CASE STUDIES -->
-    <section class="section-pad" id="case-studies" style="background: var(--color-black-deep)">
+    <section class="section-pad" id="cases" style="background:var(--color-black)">
       <div class="container">
         <div class="section-head reveal" data-reveal>
-          <span class="section-eyebrow">Growth proof</span>
-          <h2>Case studies from the course</h2>
-          <p>From community 5Ks to multi-thousand-runner weekends — organizers who partnered with Run The Day.</p>
+          <h2>More than software. More than timing.<br />We're the partner that helps your race grow.</h2>
         </div>
-        <div class="case-grid">
-          <article class="case-card reveal" data-reveal>
-            <div class="case-card__media">
-              <img src="assets/images/host-race.webp" alt="Community charity race finish area" width="640" height="400" loading="lazy" />
-            </div>
-            <div class="case-card__body">
-              <span class="case-card__meta">Philadelphia · Charity 5K</span>
-              <h3>Neighborhood fundraiser, finish-line polish</h3>
-              <p>Swapped spreadsheet registration for a branded site and on-site timing — volunteers finally stayed on course, not check-in.</p>
-              <div class="case-card__stat">+38% registrations year over year</div>
-            </div>
-          </article>
-          <article class="case-card reveal" data-reveal>
-            <div class="case-card__media">
-              <img src="assets/images/stats-3.webp" alt="Large field of runners at start" width="640" height="400" loading="lazy" />
-            </div>
-            <div class="case-card__body">
-              <span class="case-card__meta">New Jersey · Series</span>
-              <h3>Multi-race series without vendor fatigue</h3>
-              <p>One platform across the season: clone events, keep sponsors, and publish live results runners actually trust.</p>
-              <div class="case-card__stat">4 events · 1 operations stack</div>
+        <div class="proof-grid">
+          <article class="pcard reveal" data-reveal>
+            <img src="assets/images/ref/ref-01.jpg" alt="Runners and a stroller passing the Pioneer Fire Company at the Jenkintown Sunset 5K" loading="lazy" width="640" height="400" />
+            <div class="pcard-in">
+              <div class="prog">
+                <div><span class="n">530</span><span class="y">2023</span></div>
+                <span class="ar">→</span>
+                <div><span class="n">1,053</span><span class="y">2026</span></div>
+              </div>
+              <div class="pcard-big">+99%</div>
+              <p class="pcard-sub">Nearly doubled in three years</p>
+              <h3><a href="https://runtheday.com/blog/types-of-5ks/jenkintown-sunset-5k/">Jenkintown Sunset 5K</a></h3>
+              <p>Jenkintown, PA. A Kiwanis Club event — we run registration, timing and promotion.</p>
+              <a class="full" href="https://runtheday.com/blog/types-of-5ks/jenkintown-sunset-5k/">See the full case study →</a>
             </div>
           </article>
-          <article class="case-card reveal" data-reveal>
-            <div class="case-card__media">
-              <img src="assets/images/help.webp" alt="Race director with timing team" width="640" height="400" loading="lazy" />
+
+          <article class="pcard reveal" data-reveal>
+            <img src="assets/images/ref/ref-02.jpg" alt="A large field of runners streaming away from the Coast Guard 5K start arch in downtown Portsmouth" loading="lazy" width="640" height="400" />
+            <div class="pcard-in">
+              <div class="prog">
+                <div><span class="n">280</span><span class="y">2025</span></div>
+                <span class="ar">→</span>
+                <div><span class="n">700+</span><span class="y">2026</span></div>
+              </div>
+              <div class="pcard-big">+150%</div>
+              <p class="pcard-sub">Tripled in a single year</p>
+              <h3><a href="https://www.coastguardrace.com/">Coast Guard Race</a></h3>
+              <p>Portsmouth, VA. A partnership with the City — we handle permits, road closures and race-day operations.</p>
+              <a class="full" href="https://www.coastguardrace.com/">See the full case study →</a>
             </div>
-            <div class="case-card__body">
-              <span class="case-card__meta">Baltimore / DC · First-time RD</span>
-              <h3>First race, co-piloted</h3>
-              <p>Timeline, permits guidance, and a timing crew on the ground so a first-time director could lead the vision — not invent the playbook.</p>
-              <div class="case-card__stat">Sold out in 6 weeks</div>
+          </article>
+
+          <article class="pcard reveal" data-reveal>
+            <img src="assets/images/ref/ref-03.webp" alt="Runners passing under the green Shamrock Run inflatable arch at the start line" loading="lazy" width="640" height="400" />
+            <div class="pcard-in">
+              <span class="pcard-tag">Launched in partnership with Blue Cheetah Sports Timing</span>
+              <div class="pcard-big">2,000+</div>
+              <p class="pcard-sub">Runners in year one · 2026</p>
+              <h3>Philly Shamrock Run</h3>
+              <p>Philadelphia, PA. Most first-year races draw a few hundred. This one opened over 2,000 and will sell out at 3,500 in 2027.</p>
+              <a class="full" href="https://www.phillyshamrockrun.com/">Visit the race →</a>
             </div>
+          </article>
+        </div>
+        <p class="proof-disc reveal" data-reveal>
+          Results vary by race. Growth comes from a combination of runner experience, registration strategy, promotion, pricing and event execution — there's no single lever, and we're honest about that on our first call.
+        </p>
+      </div>
+    </section>
+
+    <!-- OUTCOMES -->
+    <section class="section-pad" id="outcomes" style="background:var(--color-black-deep)">
+      <div class="container">
+        <div class="section-head reveal" data-reveal>
+          <span class="eyebrow">Why directors call us</span>
+          <h2>Three things change<br />when you work with us</h2>
+        </div>
+        <div class="outs">
+          <article class="out reveal" data-reveal>
+            <p class="out-n">Outcome 01</p>
+            <h3>Less work for you</h3>
+            <p>One contract, one kickoff, one accountable team — not a registration vendor, a timer and a marketer who never talk.</p>
+          </article>
+          <article class="out reveal" data-reveal>
+            <p class="out-n">Outcome 02</p>
+            <h3>A smoother race day</h3>
+            <p>Experienced regional crews and professional timing. The people who answered your emails are the ones on your course.</p>
+          </article>
+          <article class="out reveal" data-reveal>
+            <p class="out-n">Outcome 03</p>
+            <h3>More registrations</h3>
+            <p>Conversion-focused registration, a custom website built with AI, email sending capabilities, Instagram posts and optional paid promotion.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- COVERAGE -->
-    <section class="coverage section-pad" id="coverage">
+    <!-- SERVICE -->
+    <section class="service section-pad" id="service">
       <div class="container">
         <div class="section-head reveal" data-reveal>
-          <span class="section-eyebrow">Coverage</span>
-          <h2>Where we show up race morning</h2>
-          <p>Primary markets across the Mid-Atlantic and Los Angeles — with timing crews and organizer support that know local courses.</p>
+          <span class="eyebrow">How it works</span>
+          <h2>Work with us the way<br />that fits your race</h2>
+          <p class="lede">Our engineers wrote the software and our crews are there on race day — so nothing gets lost between the software vendor taking registrations and the timing crew producing results at the finish.</p>
         </div>
-        <div class="coverage__map">
-          <div class="city-chip reveal" data-reveal><strong>Philadelphia</strong><span>PA · Core market</span></div>
-          <div class="city-chip reveal" data-reveal><strong>New Jersey</strong><span>Statewide events</span></div>
-          <div class="city-chip reveal" data-reveal><strong>Baltimore</strong><span>MD · Timing & reg</span></div>
-          <div class="city-chip reveal" data-reveal><strong>Washington, DC</strong><span>Capital region</span></div>
-          <div class="city-chip reveal" data-reveal><strong>Virginia</strong><span>Northern VA & beyond</span></div>
-          <div class="city-chip reveal" data-reveal><strong>Los Angeles</strong><span>West Coast coverage</span></div>
+        <p class="prod-cap reveal" data-reveal>Registration, fundraising, a race website, live results and a mobile app — plus a timing crew that shows up. One platform, one team.</p>
+        <div class="cols">
+          <article class="col start reveal" data-reveal>
+            <p class="col-n">Registration + Timing <span class="col-flag">Most start here</span></p>
+            <h3>Software &amp; professional timing</h3>
+            <p class="col-lede">Registration software, fundraising, participant communication and professional chip timing — managed by one experienced team.</p>
+            <ul class="ul">
+              <li>Registration &amp; fundraising on your own domain</li>
+              <li>Participant email and SMS</li>
+              <li>Certified chip timing with backup systems</li>
+              <li>Live results and custom awards</li>
+            </ul>
+          </article>
+          <article class="col reveal" data-reveal>
+            <p class="col-n">Add Race-Day Support</p>
+            <h3>Need additional help?</h3>
+            <p class="col-lede">We can also assist with course setup, packet pickup, volunteers, medals, signage, logistics and race-day operations.</p>
+            <ul class="ul">
+              <li>Course setup and signage</li>
+              <li>Packet pickup and volunteers</li>
+              <li>Medals, bibs and gear</li>
+              <li>On-site logistics and operations</li>
+            </ul>
+          </article>
+          <article class="col reveal" data-reveal>
+            <p class="col-n">Full Event Partner</p>
+            <h3>Launching or growing a race?</h3>
+            <p class="col-lede">We'll help plan, market and produce the event — while you continue to own the race.</p>
+            <ul class="ul">
+              <li>Planning, permits and municipal coordination</li>
+              <li>Promotion and sponsorship support</li>
+              <li>Full production, load-in to teardown</li>
+              <li>A growth plan for next year's field</li>
+            </ul>
+          </article>
         </div>
+        <p class="owner reveal" data-reveal>Every race is different. Start with registration and timing, then add as much support as your race needs.</p>
       </div>
     </section>
 
     <!-- PHOTO BAND -->
-    <section class="photo-band" aria-label="Race day atmosphere">
-      <img class="photo-band__img" src="assets/images/hero-runner.webp" alt="" aria-hidden="true" loading="lazy" />
-      <div class="photo-band__overlay"></div>
-      <div class="photo-band__content container reveal" data-reveal>
-        <h2>Easily host an unforgettable race</h2>
-        <p>One trusted partner for registration and timing — so you maximize finish-line energy, not paperwork.</p>
-      </div>
+    <section class="band" aria-label="Race day photographs">
+      <figure>
+        <img src="assets/images/ref/ref-04.jpg" alt="A youth team in matching shirts posing together before a 5K" loading="lazy" />
+        <figcaption>Youth teams</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/ref/ref-05.jpg" alt="Four finishers wearing medals after a 5K" loading="lazy" />
+        <figcaption>Finishers</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/ref/ref-06.jpg" alt="The front pack sprinting off the start line, in black and white" loading="lazy" />
+        <figcaption>The front pack</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/ref/ref-07.jpg" alt="A volunteer handing a bib across the packet pickup table" loading="lazy" />
+        <figcaption>Packet pickup</figcaption>
+      </figure>
     </section>
 
-    <!-- OPS -->
-    <section class="ops section-pad" id="ops">
-      <div class="container ops__grid">
-        <div class="reveal" data-reveal>
-          <span class="section-eyebrow">Race-day ops</span>
-          <h2>A full timing team — not just a box of chips</h2>
-          <p style="color: var(--text-secondary); margin-top: var(--space-3); max-width: 42ch;">
-            Setup, mats, bib assignment, live results, finish-line displays, and on-site support from the moment we arrive.
-          </p>
-          <div class="ops__list">
-            <div class="ops__item">
-              <div class="ops__num" aria-hidden="true">1</div>
-              <div>
-                <h3>Course-ready setup</h3>
-                <p>Timing infrastructure staged before the first runner arrives.</p>
-              </div>
+    <!-- COVERAGE -->
+    <section class="section-pad" id="coverage" style="background:var(--color-black)">
+      <div class="container">
+        <div class="section-head reveal" data-reveal>
+          <span class="eyebrow">Where we work</span>
+          <h2>Five regions.<br />Boots on the ground timing teams.</h2>
+        </div>
+        <div class="cov">
+          <div>
+            <div class="cities">
+              <div class="city reveal" data-reveal><b>Philadelphia</b><span>Main Line · Bucks · Montco · Delco</span></div>
+              <div class="city reveal" data-reveal><b>New Jersey</b><span>South Jersey · the Shore</span></div>
+              <div class="city reveal" data-reveal><b>Baltimore &amp; DC</b><span>Anne Arundel · Howard · Montgomery</span></div>
+              <div class="city reveal" data-reveal><b>Virginia</b><span>Portsmouth · Hampton Roads · NoVA</span></div>
+              <div class="city reveal" data-reveal><b>Los Angeles</b><span>Orange County · South Bay · the Valley · Southern California</span></div>
             </div>
-            <div class="ops__item">
-              <div class="ops__num" aria-hidden="true">2</div>
-              <div>
-                <h3>Mobile bib & check-in</h3>
-                <p>Faster lines, fewer last-minute spreadsheet fires.</p>
-              </div>
+            <div class="cov-sweet reveal" data-reveal>
+              <b>250–10,000</b>
+              <span>Runners — our sweet spot. Big enough to need real infrastructure, small enough that it feels like a true community event.</span>
             </div>
-            <div class="ops__item">
-              <div class="ops__num" aria-hidden="true">3</div>
-              <div>
-                <h3>Instant published results</h3>
-                <p>Athletes see times the second they cross — boards and mobile.</p>
+          </div>
+          <div>
+            <p class="lede reveal" data-reveal>Regional teams experienced with municipal coordination, permits, police details, road closures and race-day logistics — not flown in the night before.</p>
+            <div class="cov-suit reveal" data-reveal>
+              <p>Best suited for:</p>
+              <div class="chips">
+                <span>5Ks &amp; 10Ks</span>
+                <span>City &amp; township events</span>
+                <span>Nonprofit fundraisers</span>
+                <span>School &amp; university races</span>
+                <span>Established local traditions</span>
+                <span>Ambitious new races</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="ops__visual reveal" data-reveal>
-          <img src="assets/images/stats-3.webp" alt="Race operations and timing at the finish" width="800" height="600" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- OPERATIONS -->
+    <section class="section-pad" id="operations" style="background:var(--color-black-deep)">
+      <div class="container">
+        <div class="section-head reveal" data-reveal>
+          <span class="eyebrow">Operations</span>
+          <h2>The questions directors<br />ask us first</h2>
         </div>
+        <div class="ops">
+          <article class="op reveal" data-reveal>
+            <b>01 · Timing redundancy</b>
+            <h3>What happens if a timing mat fails?</h3>
+            <p>Every timer handles this differently. At Run The Day, we run backup systems with on-the-ground oversight to ensure all times are captured.</p>
+          </article>
+          <article class="op reveal" data-reveal>
+            <b>02 · Packet pickup</b>
+            <h3>Who runs it, and how many volunteers?</h3>
+            <p>Our team can run it, or your volunteers can. The check-in app is so easy an 83-year-old recently used it — and the average volunteer assigns 100 bibs an hour, so you need fewer people than you think.</p>
+          </article>
+          <article class="op reveal" data-reveal>
+            <b>03 · Live results</b>
+            <h3>How fast do results and awards post?</h3>
+            <p>In real time, onto the results page. You'll see custom age-group awards live, so you can announce them before runners get antsy and leave.</p>
+          </article>
+        </div>
+        <p class="ops-more reveal" data-reveal><a href="https://runtheday.com/blog/">See the complete operations FAQ →</a></p>
       </div>
     </section>
 
     <!-- PRICING -->
-    <section class="section-pad" id="pricing" style="background: var(--color-black-deep)">
+    <section class="section-pad" id="pricing" style="background:var(--color-black)">
       <div class="container">
         <div class="section-head reveal" data-reveal>
-          <span class="section-eyebrow">Pricing</span>
-          <h2>Clear tiers for every race size</h2>
-          <p>Free for organizers to launch registration. Timing and full-service packages scale with your field.</p>
+          <span class="eyebrow">Pricing</span>
+          <h2>Simple to start</h2>
+          <p class="lede">Take one piece or bring everything under one team. The specifics come from a quick conversation about your race.</p>
         </div>
-        <div class="pricing-tiers">
-          <article class="price-card reveal" data-reveal>
-            <div class="price-card__name">Starter</div>
-            <div class="price-card__price">$0<span>to organizer · registration</span></div>
-            <p class="price-card__desc">Launch a branded race site and collect signups — runners pay a small processing fee.</p>
-            <ul class="price-card__features">
-              <li>Custom registration website</li>
-              <li>Payments & waivers</li>
-              <li>Fundraising teams</li>
-              <li>Email tools</li>
-              <li>5–7% + $1 per registration</li>
-            </ul>
-            <a class="btn btn--secondary" href="#demo">Get started</a>
+        <div class="tiers">
+          <article class="tier reveal" data-reveal>
+            <p class="tier-lab">Software</p>
+            <h3>Registration &amp; fundraising</h3>
+            <div class="price">$0</div>
+            <span class="price-sub">Organizer software fee<br />Participants pay 5–7% + $1</span>
+            <p>Registration, fundraising teams, mobile check-in, email sending and a custom race website.</p>
+            <p class="tier-note-diy">Hosting a race with fewer than 250 runners? <a href="#review">Explore our $499 DIY Timing package →</a></p>
           </article>
-          <article class="price-card price-card--featured reveal" data-reveal>
-            <span class="price-card__badge">Most popular</span>
-            <div class="price-card__name">Timed</div>
-            <div class="price-card__price">Custom<span>registration + chip timing</span></div>
-            <p class="price-card__desc">The 1-stop stack: software plus an on-site timing crew for fields in our sweet spot.</p>
-            <ul class="price-card__features">
-              <li>Everything in Starter</li>
-              <li>Professional chip timing</li>
-              <li>Live results & displays</li>
-              <li>Race-day check-in support</li>
-              <li>Ideal for 250–5,000 runners</li>
-            </ul>
-            <a class="btn btn--primary" href="#demo">Book demo</a>
+          <article class="tier reveal" data-reveal>
+            <p class="tier-lab">On the ground</p>
+            <h3>Professional chip timing</h3>
+            <div class="price">From $3</div>
+            <span class="price-sub">Per runner + base fee<br />Or a custom quote</span>
+            <p>Certified chip timing, backup systems, live results, and age-group and overall scoring.</p>
           </article>
-          <article class="price-card reveal" data-reveal>
-            <div class="price-card__name">Pro Ops</div>
-            <div class="price-card__price">Custom<span>full race management</span></div>
-            <p class="price-card__desc">We help plan the day — permits, course, shirts, marketing, volunteers — not just time it.</p>
-            <ul class="price-card__features">
-              <li>Everything in Timed</li>
-              <li>Planning & timelines</li>
-              <li>Marketing support</li>
-              <li>Volunteer coordination</li>
-              <li>Human support, no bots</li>
-            </ul>
-            <a class="btn btn--secondary" href="#demo">Talk to us</a>
+          <article class="tier reveal" data-reveal>
+            <p class="tier-lab">Optional add-on</p>
+            <h3>Promotion &amp; growth</h3>
+            <div class="price">Add-on</div>
+            <span class="price-sub">Ad spend + management</span>
+            <p>Meta and Instagram campaigns, a conversion-tuned funnel, and reporting on cost per registration.</p>
           </article>
-          <article class="price-card reveal" data-reveal>
-            <div class="price-card__name">Series / Large</div>
-            <div class="price-card__price">Custom<span>up to 10,000 runners</span></div>
-            <p class="price-card__desc">Multi-event series and larger fields that need dedicated ops and priority scheduling.</p>
-            <ul class="price-card__features">
-              <li>Multi-race cloning</li>
-              <li>Priority timing crews</li>
-              <li>Dedicated success partner</li>
-              <li>Advanced reporting</li>
-              <li>Sponsor-ready pages</li>
-            </ul>
-            <a class="btn btn--secondary" href="#demo">Request quote</a>
+          <article class="tier feat reveal" data-reveal>
+            <p class="tier-lab">Everything, run by us</p>
+            <h3>Full race production</h3>
+            <div class="price">Custom</div>
+            <span class="price-sub">By field size, course &amp; scope</span>
+            <p>Software, timing, promotion, packet pickup, on-site crew and finish-line production in one package.</p>
           </article>
+        </div>
+        <div class="price-band reveal" data-reveal>
+          <strong>Start with one service or bring everything under one team.</strong>
+          <a class="btn btn--primary" href="#review">Get a quote &amp; growth review</a>
         </div>
       </div>
     </section>
 
-    <!-- TRUST -->
-    <section class="trust-bar section-pad-sm" id="trust" aria-label="Trusted by organizers">
-      <div class="container">
-        <p class="trust-bar__eyebrow reveal" data-reveal>Trusted by race directors nationwide</p>
-        <div class="logo-marquee" aria-hidden="true">
-          <div class="logo-marquee__track">
-            <span class="logo-pill">Charity 5K Series</span>
-            <span class="logo-pill">City Marathon Club</span>
-            <span class="logo-pill">Trail Run Collective</span>
-            <span class="logo-pill">School Fundraisers</span>
-            <span class="logo-pill">Corporate Challenges</span>
-            <span class="logo-pill">Park District Events</span>
-            <span class="logo-pill">Charity 5K Series</span>
-            <span class="logo-pill">City Marathon Club</span>
-            <span class="logo-pill">Trail Run Collective</span>
-            <span class="logo-pill">School Fundraisers</span>
-            <span class="logo-pill">Corporate Challenges</span>
-            <span class="logo-pill">Park District Events</span>
-          </div>
+    <!-- TRUST LOGOS -->
+    <section class="section-pad-sm" style="background:var(--color-black-deep)" aria-label="Trusted partners">
+      <div class="container trust">
+        <p class="reveal" data-reveal>Trusted by cities, nonprofits, schools and volunteer-led race committees since 2003</p>
+        <div class="logos reveal" data-reveal>
+          <div class="logo-ph"><img src="assets/images/ref/ref-08.png" alt="Blue Cheetah Sports Timing" loading="lazy" /></div>
+          <div class="logo-ph"><img src="assets/images/ref/ref-09.png" alt="City of Portsmouth" loading="lazy" /></div>
+          <div class="logo-ph"><img src="assets/images/ref/ref-10.png" alt="Coaches vs. Cancer" loading="lazy" /></div>
+          <div class="logo-ph"><img src="assets/images/ref/ref-11.png" alt="Harvard Varsity Club" loading="lazy" /></div>
+          <div class="logo-ph"><img src="assets/images/ref/ref-12.png" alt="Bucks 5K Series" loading="lazy" /></div>
+          <div class="logo-ph"><img src="assets/images/ref/ref-13.png" alt="Philadelphia Runner" loading="lazy" /></div>
+          <div class="logo-ph"><img src="assets/images/ref/ref-14.png" alt="City Fitness" loading="lazy" /></div>
+          <div class="logo-ph"><img src="assets/images/ref/ref-15.png" alt="Arlington 9/11 5K" loading="lazy" /></div>
         </div>
       </div>
     </section>
 
     <!-- LEAD FORM -->
-    <section class="lead-form-section section-pad" id="demo">
-      <div class="container lead-form-section__grid">
+    <section class="section-pad" id="review" style="background:var(--color-black)">
+      <div class="container lead-grid">
         <div class="reveal" data-reveal>
-          <span class="section-eyebrow">Book a demo</span>
-          <h2>Tell us about your next race</h2>
-          <p style="color: var(--text-secondary); margin-top: var(--space-3); max-width: 40ch;">
-            Whether you’re planning a local charity run or a competitive 5K, we’ll show you how registration and timing fit your timeline.
-          </p>
-          <ul style="margin-top: var(--space-6); display: grid; gap: var(--space-3); color: var(--text-secondary);">
-            <li>✓ Free race setup walkthrough</li>
-            <li>✓ Timing availability for your date</li>
-            <li>✓ Honest fit for 250–10,000 runners</li>
+          <span class="eyebrow">Get started</span>
+          <h2 style="font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.1;letter-spacing:-.02em">Get a race growth &amp; production review</h2>
+          <p class="lead-copy">Share a few details about your event. We'll recommend the right level of support and give you two or three practical ideas for making the race easier to produce or helping it grow.</p>
+          <ul class="lead-pts">
+            <li>A read on your current registration numbers</li>
+            <li>The right level of support for your race</li>
+            <li>Two or three specific ideas to grow the field</li>
           </ul>
         </div>
-        <form class="lead-form reveal" data-reveal id="lead-form" novalidate>
-          <div class="lead-form__success" id="form-success" role="status">Thanks — we’ll be in touch shortly.</div>
-          <div class="lead-form__row">
-            <label>First name
-              <input name="firstName" autocomplete="given-name" required />
-              <span class="field-error" data-error-for="firstName"></span>
-            </label>
-            <label>Last name
-              <input name="lastName" autocomplete="family-name" required />
-              <span class="field-error" data-error-for="lastName"></span>
-            </label>
+        <form class="form reveal" data-reveal id="reviewForm" novalidate>
+          <div class="f-row">
+            <div class="field"><label for="fname">Name</label><input id="fname" name="name" type="text" placeholder="Dana Reyes" autocomplete="name" required /></div>
+            <div class="field"><label for="femail">Email</label><input id="femail" name="email" type="email" placeholder="dana@yourrace.org" autocomplete="email" required /></div>
           </div>
-          <label>Email
-            <input type="email" name="email" autocomplete="email" required />
-            <span class="field-error" data-error-for="email"></span>
-          </label>
-          <label>Organization / Race name
-            <input name="organization" autocomplete="organization" required />
-            <span class="field-error" data-error-for="organization"></span>
-          </label>
-          <div class="lead-form__row">
-            <label>Expected runners
-              <select name="runners" required>
-                <option value="">Select…</option>
-                <option>Under 250</option>
-                <option>250–500</option>
-                <option>500–1,000</option>
-                <option>1,000–5,000</option>
-                <option>5,000–10,000</option>
-                <option>10,000+</option>
-              </select>
-              <span class="field-error" data-error-for="runners"></span>
-            </label>
-            <label>Market
-              <select name="market" required>
+          <div class="f-row">
+            <div class="field"><label for="frace">Race name</label><input id="frace" name="race" type="text" placeholder="Jenkintown Sunset 5K" /></div>
+            <div class="field"><label for="fsite">Race website</label><input id="fsite" name="website" type="text" placeholder="yourrace.org" /></div>
+          </div>
+          <div class="f-row">
+            <div class="field">
+              <label for="fregion">Region</label>
+              <select id="fregion" name="region">
                 <option value="">Select…</option>
                 <option>Philadelphia</option>
                 <option>New Jersey</option>
-                <option>Baltimore</option>
-                <option>Washington, DC</option>
+                <option>Baltimore &amp; DC</option>
                 <option>Virginia</option>
                 <option>Los Angeles</option>
-                <option>Other</option>
+                <option>Somewhere else</option>
               </select>
-              <span class="field-error" data-error-for="market"></span>
-            </label>
+            </div>
+            <div class="field">
+              <label for="fcount">Number of runners</label>
+              <select id="fcount" name="runners">
+                <option value="">Select…</option>
+                <option>Under 250</option>
+                <option>250 – 500</option>
+                <option>500 – 1,500</option>
+                <option>1,500 – 2,500</option>
+                <option>2,500 – 5,000</option>
+                <option>5,000 – 10,000</option>
+                <option>Over 10,000</option>
+              </select>
+            </div>
           </div>
-          <label>Race date (approx.)
-            <input type="date" name="raceDate" />
-            <span class="field-error" data-error-for="raceDate"></span>
-          </label>
-          <label>What do you need?
-            <textarea name="message" placeholder="Registration, timing, full ops…"></textarea>
-          </label>
-          <button class="btn btn--primary btn--lg" type="submit" style="width:100%">Request demo <span class="btn__arrow" aria-hidden="true">→</span></button>
+          <div class="field"><label for="fdate">Race date</label><input id="fdate" name="date" type="text" placeholder="March 2027 (or not set yet)" /></div>
+          <div class="field">
+            <span class="label">Services needed</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="services" value="Registration &amp; fundraising" /> Registration &amp; fundraising</label>
+              <label class="check"><input type="checkbox" name="services" value="Chip timing" /> Chip timing</label>
+              <label class="check"><input type="checkbox" name="services" value="Promotion" /> Promotion</label>
+              <label class="check"><input type="checkbox" name="services" value="Packet pickup" /> Packet pickup</label>
+              <label class="check"><input type="checkbox" name="services" value="Logistics / full production" /> Logistics / full production</label>
+              <label class="check"><input type="checkbox" name="services" value="Not sure yet" /> Not sure yet</label>
+            </div>
+          </div>
+          <div class="field"><label for="fchallenge">Biggest current challenge</label><textarea id="fchallenge" name="challenge" placeholder="Flat registration, too many vendors, timing headaches…"></textarea></div>
+          <button class="btn btn--primary btn--lg" type="submit" style="width:100%">Request my race review <span class="btn__arrow" aria-hidden="true">→</span></button>
+          <div class="done" id="done" role="status" tabindex="-1">Got it — we'll be in touch within two business days.</div>
+          <p class="form-note">No account needed. We reply from a real inbox.</p>
         </form>
       </div>
     </section>
 
-    <!-- STORY SPLIT -->
-    <section class="story-split" id="for-runners" aria-labelledby="runners-heading">
-      <div class="story-split__media">
-        <img src="assets/images/email-banner.webp" alt="Runners on course" loading="lazy" />
-      </div>
-      <div class="story-split__copy reveal" data-reveal>
-        <span class="section-eyebrow">For runners</span>
-        <h2 id="runners-heading">Find your next race. Trust your time.</h2>
-        <p>Browse events on Run The Day, register in minutes, and get live results the moment you finish — powered by the same crews race directors trust.</p>
-        <div style="margin-top: var(--space-6); display: flex; gap: var(--space-3); flex-wrap: wrap;">
-          <a class="btn btn--primary" href="#login">Find a race</a>
-          <a class="btn btn--secondary" href="#resources">Runner tips</a>
+    <!-- STORY -->
+    <section class="section-pad" id="story" style="background:var(--color-black-deep)">
+      <div class="container">
+        <div class="section-head reveal" data-reveal>
+          <span class="eyebrow">Who we are</span>
+          <h2>Founded to keep<br />traditions running</h2>
+          <p class="lede">Run The Day exists for a simple reason: we believe races bring people together, strengthen communities and inspire healthier lives. We've supported that mission since 2003.</p>
+        </div>
+        <div class="story">
+          <article class="story-card reveal" data-reveal>
+            <img src="assets/images/ref/ref-16.jpg" alt="Aerial view of thousands of runners packed down State Street behind the Media 5 Mile start banner" loading="lazy" />
+            <div class="story-in">
+              <span class="eyebrow eyebrow--gold">Tradition</span>
+              <div class="story-stat">40+</div>
+              <p class="story-stat-lab">Years of the Media 5 Mile · sells out at 1,800</p>
+              <h3>We keep traditions running</h3>
+              <p>The Media 5 Mile started in 1980 and now fills State Street, selling out at 1,800 runners. On a race like this, continuity is the whole job — flawless timing, effortless registration, no reason to stop coming.</p>
+              <a class="full" href="https://runtheday.com/find-a-race/">More on our races →</a>
+            </div>
+          </article>
+          <article class="story-card reveal" data-reveal>
+            <img src="assets/images/ref/ref-17.jpg" alt="Ian Campbell running in a Run The Day shirt at a road race" loading="lazy" />
+            <div class="story-in">
+              <span class="eyebrow">Leadership</span>
+              <div class="story-stat">Ian</div>
+              <p class="story-stat-lab">Ian Campbell · leads Run The Day</p>
+              <h3>From finance to the finish line</h3>
+              <p>Ian left investment banking during the pandemic — when races were at risk — to keep them going. He leads Run The Day toward a bright future for the sport, pairing technology with hands-on service so directors can focus on their people, not logistics.</p>
+              <a class="full" href="https://runtheday.com/ian-campbell">Read Ian's full story →</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- RESOURCES -->
-    <section class="section-pad" id="resources" style="background: var(--color-black)">
+    <section class="section-pad" id="resources" style="background:var(--color-black)">
       <div class="container">
         <div class="section-head reveal" data-reveal>
-          <span class="section-eyebrow">Resources</span>
-          <h2>Guides for directors and crews</h2>
-          <p>Practical playbooks so first-time and fiftieth-time organizers ship a seamless day.</p>
+          <span class="eyebrow">Race director resources</span>
+          <h2>A blog that reads<br />like a playbook</h2>
+          <p class="lede">Twenty years of running races, written down. These are the pieces directors send to their committees.</p>
         </div>
-        <div class="resources__grid" style="margin-top: var(--space-8)">
-          <a class="resource-card reveal" data-reveal href="#faq">
-            <span class="resource-card__tag">FAQ</span>
-            <h3>Answers to setup & race-day questions</h3>
-            <p>Registration issues, cloning annual events, timing expectations, and more.</p>
+        <div class="res">
+          <a class="resc reveal" data-reveal href="https://runtheday.com/blog/organize-a-5k/how-to-organize-a-5k/">
+            <b>How to organize a 5K</b>
+            <span>The end-to-end guide, permits to finish line</span>
           </a>
-          <a class="resource-card reveal" data-reveal href="#demo">
-            <span class="resource-card__tag">Guide</span>
-            <h3>The complete guide to running a successful race</h3>
-            <p>Must-know steps to plan, promote, and execute — free download via demo follow-up.</p>
+          <a class="resc reveal" data-reveal href="https://runtheday.com/blog/time-a-5k/how-chip-timing-works-for-5ks/">
+            <b>How chip timing works</b>
+            <span>What happens between the mat and the results page</span>
           </a>
-          <a class="resource-card reveal" data-reveal href="#pricing">
-            <span class="resource-card__tag">Compare</span>
-            <h3>How we stack up on fees & features</h3>
-            <p>Free to organizer, human support, timing included — see the full comparison in a demo.</p>
+          <a class="resc reveal" data-reveal href="https://runtheday.com/blog/managing-a-5k/race-to-reimagine-cancer-care-5k-hope-healing-community/">
+            <b>Hope, healing &amp; community</b>
+            <span>How the Reimagine Cancer Care 5K came together</span>
           </a>
         </div>
+        <p style="margin-top:22px;font-size:13px;color:var(--text-tertiary)" class="reveal" data-reveal>Iconic races don't happen by accident.</p>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="faq section-pad" id="faq" style="background: var(--color-black-deep)">
+    <!-- NEXT / FOR RUNNERS -->
+    <section class="next section-pad" id="next">
       <div class="container">
         <div class="section-head reveal" data-reveal>
-          <span class="section-eyebrow">FAQ</span>
-          <h2>Find answers to your questions</h2>
+          <span class="eyebrow">For runners</span>
+          <h2>Looking for your next race?</h2>
         </div>
-        <div class="faq__tabs reveal" data-reveal role="tablist" aria-label="FAQ categories">
-          <button class="faq__tab is-active" type="button" role="tab" aria-selected="true" data-faq-tab="setup">Race setup</button>
-          <button class="faq__tab" type="button" role="tab" aria-selected="false" data-faq-tab="registration">Registration</button>
-          <button class="faq__tab" type="button" role="tab" aria-selected="false" data-faq-tab="pricing">Pricing & add-ons</button>
-          <button class="faq__tab" type="button" role="tab" aria-selected="false" data-faq-tab="growth">Communication</button>
-          <button class="faq__tab" type="button" role="tab" aria-selected="false" data-faq-tab="teams">Teams & fundraising</button>
-        </div>
-
-        <div class="faq__panels">
-          <div class="faq__panel is-active" data-faq-panel="setup">
-            <details class="faq__item" open>
-              <summary>How do I create and configure my race?</summary>
-              <p>Set start times, distances, and timed/untimed events from your dashboard: Preview → Edit → Registration → Events.</p>
-            </details>
-            <details class="faq__item">
-              <summary>How do cloning and annual race updates work?</summary>
-              <p>Build your race once. Each year, clone the event to launch next year’s race instantly with sponsors and structure intact.</p>
-            </details>
-            <details class="faq__item">
-              <summary>Can Run The Day help first-time race directors?</summary>
-              <p>Absolutely. First-time races are our specialty — setup, planning, timelines, and race-day workflow so nothing gets missed.</p>
-            </details>
-          </div>
-          <div class="faq__panel" data-faq-panel="registration" hidden>
-            <details class="faq__item">
-              <summary>Why can’t people register for my race?</summary>
-              <p>Usually a gap between pricing tier dates or you’ve hit capacity. Check Preview → Edit → Registration → Events.</p>
-            </details>
-            <details class="faq__item">
-              <summary>Can I update the race after publishing?</summary>
-              <p>Yes — info, images, sponsors, waivers, and more. The only thing you cannot change is the race URL.</p>
-            </details>
-          </div>
-          <div class="faq__panel" data-faq-panel="pricing" hidden>
-            <details class="faq__item">
-              <summary>What does the organizer pay?</summary>
-              <p>Registration software is free to the organizer. Runners pay a small transaction fee (typically 5–7% + $1). Timing and full-ops packages are custom.</p>
-            </details>
-            <details class="faq__item">
-              <summary>What’s included with chip timing?</summary>
-              <p>A full race-day timing team: setup, equipment and mats, bib assignment, live results, finish-line displays, and on-site support.</p>
-            </details>
-          </div>
-          <div class="faq__panel" data-faq-panel="growth" hidden>
-            <details class="faq__item">
-              <summary>Do you help with marketing?</summary>
-              <p>Yes — email and text messaging plus marketing help to grow your race, tailored for fields under 5,000 and series events up to 10,000.</p>
-            </details>
-          </div>
-          <div class="faq__panel" data-faq-panel="teams" hidden>
-            <details class="faq__item">
-              <summary>Can we run fundraising teams?</summary>
-              <p>Easy fundraising teams are built in — collect team info at registration and keep cause dollars flowing to your organization.</p>
-            </details>
-            <details class="faq__item">
-              <summary>Is support human?</summary>
-              <p>Support from humans (no bots). We’re your race-day co-pilot — you handle the vision, we help you execute.</p>
-            </details>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEXT RACE CTA -->
-    <section class="next-race section-pad" id="login">
-      <div class="container reveal" data-reveal>
-        <h2>Ready for your next race morning?</h2>
-        <p>Post your race for free, or book a demo and we’ll map registration, timing, and ops to your date.</p>
-        <div class="next-race__actions">
-          <a class="btn btn--primary btn--lg" href="#demo">Book a free demo</a>
-          <a class="btn btn--secondary btn--lg" href="#demo">Post your race</a>
+        <div class="next-grid">
+          <a class="next-card reveal" data-reveal href="https://runtheday.com/find-a-race/">
+            <div class="next-in">
+              <h3>Find your next race</h3>
+              <p>Discover upcoming 5Ks, 10Ks, walks and running events.</p>
+              <span class="next-btn">Browse races →</span>
+            </div>
+          </a>
+          <a class="next-card teal reveal" data-reveal href="https://runtheday.com/results/">
+            <div class="next-in">
+              <h3>Find race results</h3>
+              <p>Search results from hundreds of races timed by Run The Day.</p>
+              <span class="next-btn">Search results →</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container site-footer__grid">
-      <div class="site-footer__brand">
-        <img src="assets/images/rtd-logo.png" alt="Run The Day" width="140" height="52" />
-        <p>Race registration software and professional chip timing — Mid-Atlantic to Los Angeles.</p>
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <a class="logo" href="#top">Run The <span>Day</span></a>
+          <p>Race production, chip timing and registration since 2003. One experienced team for races of 250–10,000 runners.</p>
+        </div>
+        <div>
+          <h4>What we do</h4>
+          <ul>
+            <li><a href="#service">Plan &amp; produce</a></li>
+            <li><a href="#service">Register &amp; grow</a></li>
+            <li><a href="#service">Time &amp; deliver results</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>For runners</h4>
+          <ul>
+            <li><a href="https://runtheday.com/results/">Results</a></li>
+            <li><a href="https://runtheday.com/find-a-race/">Find your next run</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="https://runtheday.com/blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#cases">Case studies</a></li>
+            <li><a href="#story">About Ian</a></li>
+            <li><a href="#coverage">Coverage</a></li>
+            <li><a href="#review">Get a review</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Follow</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/goruntheday/?hl=en">Instagram</a></li>
+            <li><a href="https://runtheday.beehiiv.com/">Newsletter</a></li>
+            <li><a href="https://www.linkedin.com/in/ian-campbell-runtheday/">Ian on LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/ian.on.the.run/">Ian on Instagram</a></li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <h3 class="site-footer__title">Explore</h3>
-        <ul class="site-footer__links">
-          <li><a href="#why-us">Why us</a></li>
-          <li><a href="#what-we-do">What we do</a></li>
-          <li><a href="#case-studies">Case studies</a></li>
-          <li><a href="#coverage">Coverage</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-        </ul>
+      <div class="foot-bot">
+        <span>© <span id="year">2026</span> Run The Day</span>
+        <span>Careers · COI, W-9 &amp; public bid documentation on request</span>
       </div>
-      <div>
-        <h3 class="site-footer__title">Resources</h3>
-        <ul class="site-footer__links">
-          <li><a href="#resources">Guides</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#for-runners">For runners</a></li>
-          <li><a href="#demo">Book demo</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="site-footer__title">Markets</h3>
-        <ul class="site-footer__links">
-          <li>Philadelphia</li>
-          <li>New Jersey</li>
-          <li>Baltimore · DC · Virginia</li>
-          <li>Los Angeles</li>
-        </ul>
-      </div>
-    </div>
-    <div class="container site-footer__bottom">
-      <p>© <span id="year"></span> Run The Day. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
-/**
- * Run The Day — Homepage interactions
- * Navbar, reveals, counters, forms, FAQ, subtle parallax
- */
-
 (() => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Year */
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* Sticky navbar blur */
   const header = document.getElementById("site-header");
   const onScrollHeader = () => {
     if (!header) return;
@@ -3814,7 +1197,6 @@ body::before {
   onScrollHeader();
   window.addEventListener("scroll", onScrollHeader, { passive: true });
 
-  /* Mobile nav */
   const toggle = document.querySelector(".nav__toggle");
   const menu = document.getElementById("nav-menu");
   if (toggle && menu) {
@@ -3825,7 +1207,6 @@ body::before {
       menu.classList.toggle("is-open", !open);
       document.body.style.overflow = open ? "" : "hidden";
     });
-
     menu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         toggle.setAttribute("aria-expanded", "false");
@@ -3836,7 +1217,6 @@ body::before {
     });
   }
 
-  /* Active nav link via IntersectionObserver */
   const sections = [...document.querySelectorAll("main section[id]")];
   const navLinks = [...document.querySelectorAll(".nav__link")];
   if (sections.length && navLinks.length && "IntersectionObserver" in window) {
@@ -3845,9 +1225,8 @@ body::before {
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          const id = entry.target.id;
           navLinks.forEach((l) => l.removeAttribute("aria-current"));
-          const active = map.get(id);
+          const active = map.get(entry.target.id);
           if (active) active.setAttribute("aria-current", "true");
         });
       },
@@ -3856,7 +1235,6 @@ body::before {
     sections.forEach((s) => io.observe(s));
   }
 
-  /* Scroll reveal */
   const reveals = document.querySelectorAll("[data-reveal]");
   if (reduceMotion) {
     reveals.forEach((el) => el.classList.add("is-visible"));
@@ -3869,39 +1247,38 @@ body::before {
           obs.unobserve(entry.target);
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
     );
     reveals.forEach((el) => revIo.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add("is-visible"));
   }
 
-  /* Number counters */
   const animateCount = (el) => {
     const target = parseFloat(el.dataset.count || "0");
-    const decimals = parseInt(el.dataset.decimals || "0", 10);
-    const prefix = el.dataset.prefix || "";
+    if (Number.isNaN(target)) return;
     const suffix = el.dataset.suffix || "";
-    const duration = 1200;
+    const prefix = el.dataset.prefix || "";
+    const decimals = parseInt(el.dataset.decimals || "0", 10);
+    const duration = 1400;
     const start = performance.now();
-
-    if (reduceMotion) {
-      el.textContent = `${prefix}${target.toFixed(decimals)}${suffix}`;
-      return;
-    }
-
-    const tick = (now) => {
+    const step = (now) => {
       const t = Math.min(1, (now - start) / duration);
       const eased = 1 - Math.pow(1 - t, 3);
       const value = target * eased;
-      el.textContent = `${prefix}${value.toFixed(decimals)}${suffix}`;
-      if (t < 1) requestAnimationFrame(tick);
-      else el.textContent = `${prefix}${target.toFixed(decimals)}${suffix}`;
+      el.textContent = prefix + value.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + suffix;
+      if (t < 1) requestAnimationFrame(step);
     };
-    requestAnimationFrame(tick);
+    if (reduceMotion) {
+      el.textContent = prefix + target.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + suffix;
+      return;
+    }
+    requestAnimationFrame(step);
   };
 
   const counters = document.querySelectorAll("[data-count]");
   if ("IntersectionObserver" in window) {
-    const countIo = new IntersectionObserver(
+    const cIo = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
@@ -3911,176 +1288,57 @@ body::before {
       },
       { threshold: 0.4 }
     );
-    counters.forEach((el) => countIo.observe(el));
+    counters.forEach((el) => cIo.observe(el));
   } else {
     counters.forEach(animateCount);
   }
 
-  /* Soft particles in hero */
-  const particles = document.getElementById("particles");
-  if (particles && !reduceMotion) {
-    const count = window.innerWidth < 768 ? 12 : 22;
-    const frag = document.createDocumentFragment();
-    for (let i = 0; i < count; i++) {
-      const s = document.createElement("span");
-      s.style.left = `${Math.random() * 100}%`;
-      s.style.animationDuration = `${10 + Math.random() * 14}s`;
-      s.style.animationDelay = `${Math.random() * 10}s`;
-      s.style.width = s.style.height = `${2 + Math.random() * 3}px`;
-      frag.appendChild(s);
-    }
-    particles.appendChild(frag);
-  }
-
-  /* Hero ready state + subtle mouse parallax */
-  const hero = document.querySelector(".hero");
-  if (hero) {
-    requestAnimationFrame(() => hero.classList.add("is-ready"));
-
-    const media = hero.querySelector("[data-parallax]");
-    if (media && !reduceMotion && window.matchMedia("(pointer: fine)").matches) {
-      let raf = 0;
-      let tx = 0;
-      let ty = 0;
-      hero.addEventListener("mousemove", (e) => {
-        const rect = hero.getBoundingClientRect();
-        tx = ((e.clientX - rect.left) / rect.width - 0.5) * 12;
-        ty = ((e.clientY - rect.top) / rect.height - 0.5) * 8;
-        if (!raf) {
-          raf = requestAnimationFrame(() => {
-            media.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
-            raf = 0;
-          });
-        }
-      });
+  if (!reduceMotion) {
+    const media = document.querySelector("[data-parallax]");
+    if (media) {
+      window.addEventListener(
+        "scroll",
+        () => {
+          const y = window.scrollY;
+          if (y < window.innerHeight) {
+            media.style.transform = `translate3d(0, ${y * 0.18}px, 0)`;
+          }
+        },
+        { passive: true }
+      );
     }
   }
 
-  /* Soft tilt on mockups */
-  if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
-    document.querySelectorAll("[data-tilt]").forEach((el) => {
-      el.addEventListener("mousemove", (e) => {
-        const r = el.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        el.style.transform = `perspective(1000px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
-      });
-      el.addEventListener("mouseleave", () => {
-        el.style.transform = "";
-      });
-    });
-  }
-
-  /* Button ripple */
-  document.querySelectorAll(".btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      if (reduceMotion) return;
-      const ripple = document.createElement("span");
-      ripple.className = "ripple";
-      const rect = btn.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      ripple.style.width = ripple.style.height = `${size}px`;
-      ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
-      ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
-      btn.appendChild(ripple);
-      ripple.addEventListener("animationend", () => ripple.remove());
-    });
-  });
-
-  /* FAQ tabs */
-  const tabs = document.querySelectorAll("[data-faq-tab]");
-  const panels = document.querySelectorAll("[data-faq-panel]");
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const id = tab.dataset.faqTab;
-      tabs.forEach((t) => {
-        t.classList.toggle("is-active", t === tab);
-        t.setAttribute("aria-selected", String(t === tab));
-      });
-      panels.forEach((panel) => {
-        panel.hidden = panel.dataset.faqPanel !== id;
-      });
-    });
-  });
-
-  /* Lead / demo form validation + success */
-  const form = document.getElementById("lead-form");
-  if (form) {
-    const fields = {
-      firstName: { el: form.querySelector('[name="firstName"]'), msg: "Enter your first name." },
-      lastName: { el: form.querySelector('[name="lastName"]'), msg: "Enter your last name." },
-      email: {
-        el: form.querySelector('[name="email"]'),
-        msg: "Enter a valid email.",
-        test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
-      },
-      organization: { el: form.querySelector('[name="organization"]'), msg: "Tell us your race or organization." },
-      runners: { el: form.querySelector('[name="runners"]'), msg: "Select expected runners." },
-      market: { el: form.querySelector('[name="market"]'), msg: "Select your market." },
-    };
-
-    const validateField = (key) => {
-      const field = fields[key];
-      if (!field?.el) return true;
-      const label = field.el.closest("label");
-      const error = label?.querySelector(`[data-error-for="${key}"]`) || label?.querySelector(".field-error");
-      const value = (field.el.value || "").trim();
-      const ok = Boolean(value) && (!field.test || field.test(value));
-      field.el.setAttribute("aria-invalid", String(!ok));
-      if (error) error.textContent = ok ? "" : field.msg;
-      return ok;
-    };
-
-    Object.keys(fields).forEach((key) => {
-      fields[key].el?.addEventListener("blur", () => validateField(key));
-      fields[key].el?.addEventListener("input", () => {
-        if (fields[key].el.getAttribute("aria-invalid") === "true") validateField(key);
-      });
-      fields[key].el?.addEventListener("change", () => {
-        if (fields[key].el.getAttribute("aria-invalid") === "true") validateField(key);
-      });
-    });
-
-    form.addEventListener("submit", async (e) => {
+  const form = document.getElementById("reviewForm");
+  const done = document.getElementById("done");
+  if (form && done) {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const ok = Object.keys(fields).every(validateField);
+      const email = document.getElementById("femail");
+      const name = document.getElementById("fname");
+      let ok = true;
+      [name, email].forEach((el) => {
+        if (el) el.style.borderColor = "";
+      });
+      if (!name?.value.trim()) {
+        if (name) name.style.borderColor = "#C0392B";
+        ok = false;
+      }
+      if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) {
+        if (email) email.style.borderColor = "#C0392B";
+        ok = false;
+      }
       if (!ok) {
-        form.querySelector('[aria-invalid="true"]')?.focus();
+        (name?.value.trim() ? email : name)?.focus();
         return;
       }
-
-      const btn = form.querySelector('button[type="submit"]');
-      const success = document.getElementById("form-success");
-      const original = btn?.innerHTML;
-
-      if (btn) {
-        btn.classList.add("is-loading");
-        btn.setAttribute("aria-busy", "true");
-        btn.innerHTML = "Sending…";
-      }
-
-      await new Promise((r) => setTimeout(r, 900));
-
-      if (btn) {
-        btn.classList.remove("is-loading");
-        btn.removeAttribute("aria-busy");
-        if (original) btn.innerHTML = original;
-        btn.disabled = true;
-      }
-      if (success) success.classList.add("is-visible");
-      form.reset();
+      const btn = form.querySelector("button");
+      if (btn) btn.style.display = "none";
+      done.classList.add("is-visible");
+      done.style.display = "block";
+      done.focus?.();
     });
   }
-
-  /* Newsletter (lightweight) */
-  const newsletter = document.getElementById("newsletter-form");
-  newsletter?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const input = newsletter.querySelector("input");
-    if (!input?.value) return;
-    input.value = "";
-    input.placeholder = "Subscribed — thank you!";
-  });
 })();
 
   </script>

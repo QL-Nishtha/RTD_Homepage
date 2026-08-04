@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Run The Day — race registration software and professional chip timing for 5Ks. One trusted partner from signup to finish line." />
+  <meta name="theme-color" content="#12121b" />
+  <title>Race Registration Software & Timing for 5Ks | Run The Day</title>
+  <link rel="icon" href="assets/images/favicon.ico" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/design-system.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ========== NAVIGATION ========== -->
+  <header class="site-header" id="site-header" data-scrolled="false">
+    <nav class="nav container" aria-label="Primary">
+      <a class="nav__brand" href="#top" aria-label="Run The Day home">
+        <img src="assets/images/rtd-logo.png" alt="Run The Day" width="148" height="56" class="nav__logo" />
+      </a>
+
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="#platform">Platform</a></li>
+          <li><a class="nav__link" href="#how-it-works">How it works</a></li>
+          <li><a class="nav__link" href="#case-studies">Case studies</a></li>
+          <li><a class="nav__link" href="#pricing">Pricing</a></li>
+          <li><a class="nav__link" href="#faq">FAQ</a></li>
+        </ul>
+        <div class="nav__actions">
+          <a class="btn btn--text" href="#login">Login</a>
+          <a class="btn btn--primary" href="#demo">Book Demo <span class="btn__arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="top" aria-label="Hero">
+      <div class="hero__media" data-parallax>
+        <img
+          class="hero__bg"
+          src="assets/images/hero-bg.webp"
+          alt=""
+          aria-hidden="true"
+          fetchpriority="high"
+        />
+        <div class="hero__overlay"></div>
+        <div class="hero__mesh" aria-hidden="true"></div>
+        <div class="hero__particles" aria-hidden="true" id="particles"></div>
+        <div class="hero__track" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero__content container">
+        <p class="hero__brand reveal" data-reveal>Run The Day</p>
+        <h1 class="hero__title reveal" data-reveal>
+          Host a 5K that brings your community together
+        </h1>
+        <p class="hero__subtitle reveal" data-reveal>
+          From signups to the finish line — registration, timing, and race-day support in one premium platform built for organizers who refuse to settle.
+        </p>
+        <div class="hero__cta reveal" data-reveal>
+          <a class="btn btn--primary btn--lg" href="#demo">
+            Book Demo <span class="btn__arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="btn btn--secondary btn--lg" href="#pricing">View Pricing</a>
+        </div>
+      </div>
+
+      <div class="hero__stats" aria-label="Key statistics">
+        <article class="metric-card glass-card float-a reveal" data-reveal style="--delay: 0.1s">
+          <span class="metric-card__value" data-count="250" data-suffix="+">0</span>
+          <span class="metric-card__label">Races Timed</span>
+          <span class="metric-card__live" aria-hidden="true"><i></i> Live</span>
+        </article>
+        <article class="metric-card glass-card float-b reveal" data-reveal style="--delay: 0.2s">
+          <span class="metric-card__value" data-count="100" data-suffix="K+">0</span>
+          <span class="metric-card__label">Athletes</span>
+        </article>
+        <article class="metric-card glass-card float-c reveal" data-reveal style="--delay: 0.3s">
+          <span class="metric-card__value" data-count="99.99" data-suffix="%" data-decimals="2">0</span>
+          <span class="metric-card__label">Accurate Results</span>
+        </article>
+        <article class="metric-card glass-card float-d reveal" data-reveal style="--delay: 0.4s">
+          <span class="metric-card__value" data-count="15" data-suffix="+">0</span>
+          <span class="metric-card__label">Years Experience</span>
+        </article>
+      </div>
+
+      <a class="hero__scroll" href="#trust" aria-label="Scroll to content">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ========== TRUST BAR ========== -->
+    <section class="trust-bar section-pad-sm" id="trust" aria-label="Trusted by organizers">
+      <div class="container">
+        <p class="trust-bar__eyebrow reveal" data-reveal>Trusted by race directors nationwide</p>
+        <div class="trust-bar__grid reveal" data-reveal>
+          <div class="trust-bar__stat">
+            <strong data-count="10000" data-suffix="+">0</strong>
+            <span>Races supported</span>
+          </div>
+          <div class="trust-bar__stat">
+            <strong data-count="20" data-prefix="$" data-suffix="M+">0</strong>
+            <span>Raised for causes</span>
+          </div>
+          <div class="trust-bar__stat">
+            <strong data-count="4.9" data-decimals="1" data-suffix="★">0</strong>
+            <span>Average review score</span>
+          </div>
+          <div class="trust-bar__stat">
+            <strong data-count="20" data-suffix="+">0</strong>
+            <span>Years of expertise</span>
+          </div>
+        </div>
+        <div class="logo-marquee" aria-hidden="true">
+          <div class="logo-marquee__track">
+            <span class="logo-pill">Charity 5K Series</span>
+            <span class="logo-pill">City Marathon Club</span>
+            <span class="logo-pill">Trail Run Collective</span>
+            <span class="logo-pill">School Fundraisers</span>
+            <span class="logo-pill">Corporate Challenges</span>
+            <span class="logo-pill">Park District Events</span>
+            <span class="logo-pill">Charity 5K Series</span>
+            <span class="logo-pill">City Marathon Club</span>
+            <span class="logo-pill">Trail Run Collective</span>
+            <span class="logo-pill">School Fundraisers</span>
+            <span class="logo-pill">Corporate Challenges</span>
+            <span class="logo-pill">Park District Events</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROBLEM ========== -->
+    <section class="problem section-pad" id="problem">
+      <div class="container problem__grid">
+        <div class="problem__copy">
+          <p class="eyebrow reveal" data-reveal>The reality</p>
+          <h2 class="reveal" data-reveal>Organizing a race is overwhelming</h2>
+          <p class="lede reveal" data-reveal>
+            You've got a cause to support — but the to-do list keeps growing. Run The Day handles the hard stuff so you can focus on finish-line energy, not paperwork.
+          </p>
+        </div>
+        <ul class="problem__list">
+          <li class="feature-card reveal" data-reveal>
+            <span class="feature-card__icon" aria-hidden="true">01</span>
+            <div>
+              <h3>Full-time job already</h3>
+              <p>Race planning feels like a second career — spreadsheets, vendors, and late-night emails.</p>
+            </div>
+          </li>
+          <li class="feature-card reveal" data-reveal>
+            <span class="feature-card__icon" aria-hidden="true">02</span>
+            <div>
+              <h3>Buried in logistics</h3>
+              <p>Shirt sizes, bibs, waivers, and last-minute changes eat the hours meant for promotion.</p>
+            </div>
+          </li>
+          <li class="feature-card reveal" data-reveal>
+            <span class="feature-card__icon" aria-hidden="true">03</span>
+            <div>
+              <h3>Volunteers don't self-organize</h3>
+              <p>Coordination across teams, timing crews, and sponsors shouldn't be a scramble.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== PLATFORM / PRODUCT SHOWCASE ========== -->
+    <section class="platform section-pad" id="platform">
+      <div class="container">
+        <header class="section-header section-header--center">
+          <p class="eyebrow reveal" data-reveal>Platform</p>
+          <h2 class="reveal" data-reveal>Your one-stop shop for hosting a 5K</h2>
+          <p class="lede reveal" data-reveal>
+            Registration, timing, analytics, and race-day operations — designed as a cohesive product, not a patchwork of tools.
+          </p>
+        </header>
+
+        <div class="showcase">
+          <!-- Registration -->
+          <article class="showcase__row reveal" data-reveal>
+            <div class="showcase__copy">
+              <span class="badge badge--teal">Registration</span>
+              <h3>Custom race registration websites</h3>
+              <p>Let runners sign up fast. Collect payments, waivers, fundraising teams, volunteer details, and more — automatically.</p>
+              <ul class="checklist">
+                <li>Mobile-first signup flows</li>
+                <li>Tiered pricing & capacity controls</li>
+                <li>Fundraising teams built in</li>
+              </ul>
+            </div>
+            <div class="showcase__visual">
+              <div class="mockup mockup--primary" data-tilt>
+                <div class="mockup__chrome">
+                  <span></span><span></span><span></span>
+                  <em>Registration Dashboard</em>
+                </div>
+                <div class="mockup__body">
+                  <div class="mock-dash">
+                    <aside class="mock-dash__side">
+                      <strong>RTD</strong>
+                      <nav>
+                        <span class="is-active">Overview</span>
+                        <span>Events</span>
+                        <span>Pricing</span>
+                        <span>Waivers</span>
+                      </nav>
+                    </aside>
+                    <div class="mock-dash__main">
+                      <header>
+                        <div>
+                          <small>Live event</small>
+                          <strong>Spring Charity 5K</strong>
+                        </div>
+                        <span class="pill pill--live"><i></i> Registration open</span>
+                      </header>
+                      <div class="mock-metrics">
+                        <div><b>1,248</b><span>Registered</span></div>
+                        <div><b>$42.6K</b><span>Raised</span></div>
+                        <div><b>86%</b><span>Capacity</span></div>
+                      </div>
+                      <div class="mock-chart">
+                        <div class="mock-chart__bars">
+                          <i style="--h:40%"></i><i style="--h:55%"></i><i style="--h:48%"></i>
+                          <i style="--h:70%"></i><i style="--h:85%"></i><i style="--h:62%"></i><i style="--h:90%"></i>
+                        </div>
+                        <p>Registrations this week</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="float-window glass-card" data-float>
+                <span class="pill pill--gold">+128 today</span>
+                <strong>Peak signup hour</strong>
+                <p>9:00–10:00 AM</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Timing -->
+          <article class="showcase__row showcase__row--reverse reveal" data-reveal>
+            <div class="showcase__copy">
+              <span class="badge badge--gold">Timing</span>
+              <h3>Chip timing with live results</h3>
+              <p>Deliver fast, accurate results with trusted timing pros and tools built for race-day success — not just equipment rental.</p>
+              <ul class="checklist">
+                <li>Full on-site timing team</li>
+                <li>Finish-line displays & live results</li>
+                <li>Bib assignment & check-in</li>
+              </ul>
+            </div>
+            <div class="showcase__visual">
+              <div class="image-frame" data-tilt>
+                <img src="assets/images/stats-2.webp" alt="Athletes crossing the finish line with live timing overlays" loading="lazy" />
+                <div class="image-frame__overlays">
+                  <div class="hud-chip glass-card">
+                    <span class="hud-chip__label">GUN TIME</span>
+                    <strong>00:24:17.03</strong>
+                  </div>
+                  <div class="hud-chip glass-card hud-chip--teal">
+                    <span class="hud-chip__label"><i></i> LIVE TRACKING</span>
+                    <strong>Bib #1042 · Finish</strong>
+                  </div>
+                  <div class="hud-meta glass-card">
+                    <span>Finish processing</span>
+                    <strong>&lt; 2 sec</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Race Management -->
+          <article class="showcase__row reveal" data-reveal>
+            <div class="showcase__copy">
+              <span class="badge">Race Management</span>
+              <h3>Operations that stay ahead of race day</h3>
+              <p>Stay organized with 20+ years of race expertise. Free tools — or let us handle permits, course planning, shirts, marketing, and volunteers.</p>
+              <ul class="checklist">
+                <li>Volunteer scheduling</li>
+                <li>Sponsor & vendor coordination</li>
+                <li>Email & text messaging</li>
+              </ul>
+            </div>
+            <div class="showcase__visual showcase__visual--stack">
+              <div class="mockup mockup--secondary" data-tilt>
+                <div class="mockup__chrome">
+                  <span></span><span></span><span></span>
+                  <em>Race Management</em>
+                </div>
+                <div class="mockup__body mock-ops">
+                  <div class="mock-ops__row">
+                    <span class="tag">Volunteers</span>
+                    <strong>48 / 52 assigned</strong>
+                    <div class="progress"><i style="width:92%"></i></div>
+                  </div>
+                  <div class="mock-ops__row">
+                    <span class="tag tag--gold">Scoring</span>
+                    <strong>Age groups synced</strong>
+                    <div class="progress"><i style="width:100%"></i></div>
+                  </div>
+                  <div class="mock-ops__row">
+                    <span class="tag tag--teal">Analytics</span>
+                    <strong>Course split report</strong>
+                    <div class="progress"><i style="width:74%"></i></div>
+                  </div>
+                </div>
+              </div>
+              <div class="mockup mockup--mini glass-card" data-float>
+                <small>Results</small>
+                <strong>Official posted</strong>
+                <span class="pill pill--live"><i></i> Synced</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="platform__cta reveal" data-reveal>
+          <a class="btn btn--primary" href="#demo">Book a demo <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="#demo">Setup your race — free</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section class="how section-pad" id="how-it-works">
+      <div class="container">
+        <header class="section-header section-header--center">
+          <p class="eyebrow reveal" data-reveal>How it works</p>
+          <h2 class="reveal" data-reveal>Three steps to race day</h2>
+          <p class="lede reveal" data-reveal">Launch registration, invite your community, and deliver results the moment athletes cross the line.</p>
+        </header>
+
+        <ol class="steps">
+          <li class="primary-card step reveal" data-reveal>
+            <span class="step__num">01</span>
+            <h3>Create your race — free</h3>
+            <p>Enter race details, open registration, and start fundraising in minutes.</p>
+          </li>
+          <li class="primary-card step reveal" data-reveal>
+            <span class="step__num">02</span>
+            <h3>Invite participants</h3>
+            <p>Runners sign up online. Fees go to your organization (minus a small transaction fee).</p>
+          </li>
+          <li class="primary-card step reveal" data-reveal>
+            <span class="step__num">03</span>
+            <h3>Time your race</h3>
+            <p>Work with us so runners see results immediately at the finish line.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== CASE STUDIES ========== -->
+    <section class="cases section-pad" id="case-studies">
+      <div class="container">
+        <header class="section-header">
+          <p class="eyebrow reveal" data-reveal>Case studies</p>
+          <h2 class="reveal" data-reveal">Proven on the course</h2>
+          <p class="lede reveal" data-reveal">From small-town fundraisers to city-wide series — outcomes that organizers can measure.</p>
+        </header>
+
+        <article class="case case--featured reveal" data-reveal>
+          <div class="case__media">
+            <img src="assets/images/host-race.webp" alt="Community 5K finish celebration" loading="lazy" />
+            <div class="case__media-meta glass-card">
+              <span>Spring City Classic</span>
+              <strong>2,400 participants</strong>
+            </div>
+          </div>
+          <div class="case__body">
+            <span class="badge badge--gold">Featured</span>
+            <h3>Community classic, enterprise execution</h3>
+            <div class="case__blocks">
+              <div>
+                <h4>Challenge</h4>
+                <p>Manual registration and delayed results were capping growth and frustrating sponsors.</p>
+              </div>
+              <div>
+                <h4>Solution</h4>
+                <p>Unified registration, fundraising teams, and on-site chip timing with live finish displays.</p>
+              </div>
+              <div>
+                <h4>Outcome</h4>
+                <p>Registration up 34%, finish processing under 2 seconds, and $180K raised for local schools.</p>
+              </div>
+            </div>
+            <div class="case__metrics">
+              <div><strong>+34%</strong><span>Registration increase</span></div>
+              <div><strong>&lt;2s</strong><span>Finish processing</span></div>
+              <div><strong>2,400</strong><span>Participants</span></div>
+              <div><strong>6 mo</strong><span>Timeline</span></div>
+            </div>
+            <blockquote class="case__quote">
+              <p>“Run The Day felt like a co-pilot. We finally looked as professional as the race felt.”</p>
+              <footer>— Race Director, Spring City Classic</footer>
+            </blockquote>
+          </div>
+        </article>
+
+        <div class="case-grid">
+          <article class="secondary-card case-card reveal" data-reveal>
+            <img src="assets/images/stats-1.webp" alt="Trail race packing area" loading="lazy" />
+            <div class="case-card__body">
+              <h3>Trail Run Collective</h3>
+              <p>Volunteer management + scoring for a multi-distance weekend series.</p>
+              <div class="case-card__stats">
+                <span><strong>+22%</strong> signups</span>
+                <span><strong>890</strong> athletes</span>
+              </div>
+            </div>
+          </article>
+          <article class="secondary-card case-card reveal" data-reveal>
+            <img src="assets/images/organize.webp" alt="Race organizers planning" loading="lazy" />
+            <div class="case-card__body">
+              <h3>Harbor Charity Mile</h3>
+              <p>First-time directors launched a polished race with guided setup and timing.</p>
+              <div class="case-card__stats">
+                <span><strong>$64K</strong> raised</span>
+                <span><strong>12 wks</strong> timeline</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SOCIAL PROOF ========== -->
+    <section class="social section-pad" id="testimonials" aria-label="Testimonials and awards">
+      <div class="container">
+        <header class="section-header section-header--center">
+          <p class="eyebrow reveal" data-reveal>Trust</p>
+          <h2 class="reveal" data-reveal">We've supported over 10,000 races</h2>
+          <p class="lede reveal" data-reveal>
+            From small towns to major cities — communities trust Run The Day for registration websites and race timing.
+          </p>
+        </header>
+
+        <div class="testimonial-grid">
+          <figure class="primary-card testimonial reveal" data-reveal>
+            <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>
+              <p>Simple enough for an 83-year-old volunteer — powerful enough for our biggest race of the year.</p>
+            </blockquote>
+            <figcaption>
+              <strong>Morgan Hale</strong>
+              <span>Race Director · Midwest 5K Series</span>
+            </figcaption>
+          </figure>
+          <figure class="primary-card testimonial reveal" data-reveal>
+            <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>
+              <p>Live results and a real timing team on site changed how sponsors talk about our event.</p>
+            </blockquote>
+            <figcaption>
+              <strong>Priya Shah</strong>
+              <span>Executive Director · Harbor Charity Mile</span>
+            </figcaption>
+          </figure>
+          <figure class="primary-card testimonial reveal" data-reveal>
+            <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>
+              <p>We cloned last year's race in minutes. Same polish, zero rebuild stress.</p>
+            </blockquote>
+            <figcaption>
+              <strong>Chris Nguyen</strong>
+              <span>Operations Lead · Trail Run Collective</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <ul class="awards reveal" data-reveal>
+          <li><strong>Awwwards</strong><span>Site of the Day nominee spirit</span></li>
+          <li><strong>4.9 / 5</strong><span>Organizer satisfaction</span></li>
+          <li><strong>$20M+</strong><span>Raised for local causes</span></li>
+          <li><strong>Humans</strong><span>Support — no bots</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== PRICING ========== -->
+    <section class="pricing section-pad" id="pricing">
+      <div class="container">
+        <header class="section-header section-header--center">
+          <p class="eyebrow reveal" data-reveal>Pricing</p>
+          <h2 class="reveal" data-reveal">How we stack up</h2>
+          <p class="lede reveal" data-reveal">Free for organizers. Transparent runner fees. Built for races under 5,000 participants.</p>
+        </header>
+
+        <div class="pricing-cards">
+          <article class="primary-card price-card price-card--featured reveal" data-reveal>
+            <div class="price-card__ribbon">Recommended</div>
+            <h3>Run The Day</h3>
+            <p class="price-card__tagline">Registration + timing, one partner</p>
+            <div class="price-card__price">
+              <span class="price-card__amount">Free</span>
+              <span class="price-card__note">to organizer</span>
+            </div>
+            <p class="price-card__runner">Runner pays <strong>5–7% + $1</strong></p>
+            <ul class="checklist">
+              <li>1-stop shop with race timing</li>
+              <li>Easy fundraising teams</li>
+              <li>Marketing help to grow your race</li>
+              <li>Email & text messaging</li>
+              <li>Mobile bib assignment & check-in</li>
+              <li>Support from humans (no bots)</li>
+            </ul>
+            <a class="btn btn--primary btn--block" href="#demo">Book Demo <span class="btn__arrow" aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="secondary-card price-card reveal" data-reveal>
+            <h3>Typical platforms</h3>
+            <p class="price-card__tagline">Fragmented tools & opaque pricing</p>
+            <div class="price-card__price">
+              <span class="price-card__amount price-card__amount--muted">Talk to sales</span>
+            </div>
+            <p class="price-card__runner">Runner pays <strong>6–14%</strong> or monthly fees</p>
+            <ul class="checklist checklist--muted">
+              <li>Often no bundled timing</li>
+              <li>Complex fundraising add-ons</li>
+              <li>Limited race-day support</li>
+              <li>Bot-heavy support queues</li>
+            </ul>
+            <a class="btn btn--ghost btn--block" href="#compare">Compare features</a>
+          </article>
+        </div>
+
+        <div class="feature-matrix reveal" data-reveal id="compare">
+          <h3 class="feature-matrix__title">Feature matrix</h3>
+          <div class="table-wrap" role="region" aria-label="Platform comparison" tabindex="0">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th scope="col">Platform features</th>
+                  <th scope="col" class="is-highlight">Run The Day</th>
+                  <th scope="col">RunSignup</th>
+                  <th scope="col">Others</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Simple enough for volunteers</th>
+                  <td class="is-highlight"><span class="check" aria-label="Yes">✓</span></td>
+                  <td><span class="check">✓</span></td>
+                  <td><span class="dash">—</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">1-stop shop with race timing</th>
+                  <td class="is-highlight"><span class="check" aria-label="Yes">✓</span></td>
+                  <td><span class="dash">—</span></td>
+                  <td><span class="dash">—</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Easy fundraising teams</th>
+                  <td class="is-highlight"><span class="check" aria-label="Yes">✓</span></td>
+                  <td><span class="check">✓</span></td>
+                  <td><span class="dash">—</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Marketing help</th>
+                  <td class="is-highlight"><span class="check" aria-label="Yes">✓</span></td>
+                  <td><span class="dash">—</span></td>
+                  <td><span class="dash">—</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Mobile bib assignment</th>
+                  <td class="is-highlight"><span class="check" aria-label="Yes">✓</span></td>
+                  <td><span class="check">✓</span></td>
+                  <td><span class="dash">—</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Human support</th>
+                  <td class="is-highlight"><span class="check" aria-label="Yes">✓</span></td>
+                  <td><span class="dash">—</span></td>
+                  <td><span class="dash">—</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Organizer cost</th>
+                  <td class="is-highlight"><strong>Free</strong></td>
+                  <td>Free</td>
+                  <td>$15–$100/mo</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA / FORM ========== -->
+    <section class="cta-band section-pad" id="demo">
+      <div class="container cta-band__grid">
+        <div class="cta-band__copy">
+          <p class="eyebrow reveal" data-reveal>Book a demo</p>
+          <h2 class="reveal" data-reveal>Easily host an unforgettable race</h2>
+          <p class="lede reveal" data-reveal>
+            Whether you're planning a local charity run or a competitive 5K, Run The Day is built to help you succeed — no spreadsheets, no stress.
+          </p>
+          <ul class="checklist reveal" data-reveal>
+            <li>Walkthrough of registration & timing</li>
+            <li>First-time director guidance</li>
+            <li>Same-week setup available</li>
+          </ul>
+        </div>
+
+        <form class="primary-card demo-form reveal" data-reveal id="demo-form" novalidate>
+          <div class="field">
+            <input id="name" name="name" type="text" required placeholder=" " autocomplete="name" />
+            <label for="name">Full name</label>
+            <span class="field__error" role="alert"></span>
+          </div>
+          <div class="field">
+            <input id="email" name="email" type="email" required placeholder=" " autocomplete="email" />
+            <label for="email">Work email</label>
+            <span class="field__error" role="alert"></span>
+          </div>
+          <div class="field">
+            <input id="race" name="race" type="text" required placeholder=" " />
+            <label for="race">Race / organization</label>
+            <span class="field__error" role="alert"></span>
+          </div>
+          <div class="field">
+            <select id="runners" name="runners" required>
+              <option value="" disabled selected></option>
+              <option value="under-100">Under 100</option>
+              <option value="100-500">100–500</option>
+              <option value="500-2000">500–2,000</option>
+              <option value="2000-plus">2,000+</option>
+            </select>
+            <label for="runners">Expected runners</label>
+            <span class="field__error" role="alert"></span>
+          </div>
+          <button class="btn btn--primary btn--block btn--lg" type="submit" data-loading-text="Sending…">
+            Book Demo <span class="btn__arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="form-note">We'll respond within one business day. No spam.</p>
+          <div class="form-success" hidden role="status">
+            <div class="form-success__icon" aria-hidden="true">✓</div>
+            <strong>You're on the list</strong>
+            <p>A race specialist will reach out shortly.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section class="faq section-pad" id="faq">
+      <div class="container container--narrow">
+        <header class="section-header section-header--center">
+          <p class="eyebrow reveal" data-reveal>FAQ</p>
+          <h2 class="reveal" data-reveal>Find answers to your questions</h2>
+        </header>
+
+        <div class="faq__tabs reveal" data-reveal role="tablist" aria-label="FAQ categories">
+          <button class="faq__tab is-active" role="tab" aria-selected="true" data-faq-tab="setup">Race setup</button>
+          <button class="faq__tab" role="tab" aria-selected="false" data-faq-tab="registration">Registration</button>
+          <button class="faq__tab" role="tab" aria-selected="false" data-faq-tab="pricing">Pricing</button>
+          <button class="faq__tab" role="tab" aria-selected="false" data-faq-tab="timing">Timing</button>
+        </div>
+
+        <div class="faq__list" data-faq-panel="setup">
+          <details class="faq-item secondary-card" open>
+            <summary>How do I create and configure my race?</summary>
+            <p>Set start times, distances, and timed/untimed events from your dashboard under Preview → Edit → Registration in the Events section.</p>
+          </details>
+          <details class="faq-item secondary-card">
+            <summary>How do cloning and annual race updates work?</summary>
+            <p>Build your race once. Each year, clone the event to launch next year's race instantly — same structure, fresh dates.</p>
+          </details>
+          <details class="faq-item secondary-card">
+            <summary>Can Run The Day help first-time race directors?</summary>
+            <p>Absolutely. First-time races are our specialty. Think of us as your race-day co-pilot — you handle the vision, we help you execute.</p>
+          </details>
+        </div>
+
+        <div class="faq__list" data-faq-panel="registration" hidden>
+          <details class="faq-item secondary-card">
+            <summary>Why can't people register for my race?</summary>
+            <p>Usually a gap between pricing tier dates or you've hit capacity. Check both under Preview → Edit → Registration.</p>
+          </details>
+          <details class="faq-item secondary-card">
+            <summary>Can I update my race after publishing?</summary>
+            <p>Yes — race info, images, sponsors, and waivers. The only thing you cannot change is the race URL.</p>
+          </details>
+        </div>
+
+        <div class="faq__list" data-faq-panel="pricing" hidden>
+          <details class="faq-item secondary-card">
+            <summary>What does the organizer pay?</summary>
+            <p>Run The Day is free to the organizer. Runners pay a transparent 5–7% + $1 transaction fee.</p>
+          </details>
+          <details class="faq-item secondary-card">
+            <summary>Are there monthly platform fees?</summary>
+            <p>No monthly fees for organizers. You keep costs predictable while we handle the technology.</p>
+          </details>
+        </div>
+
+        <div class="faq__list" data-faq-panel="timing" hidden>
+          <details class="faq-item secondary-card">
+            <summary>What can races expect from the RTD team on race day?</summary>
+            <p>A full timing team — not just equipment. Chip setup, mats, bib assignment, live results, finish-line displays, and on-site support from arrival.</p>
+          </details>
+          <details class="faq-item secondary-card">
+            <summary>Do you support DIY timing?</summary>
+            <p>We specialize in professional chip timing with humans on site. Ask us during your demo which option fits your event size.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GUIDE ========== -->
+    <section class="guide section-pad-sm" id="guide">
+      <div class="container">
+        <div class="guide__card primary-card reveal" data-reveal>
+          <div class="guide__copy">
+            <p class="eyebrow">Free guide</p>
+            <h2>The complete guide to running a successful race event</h2>
+            <p>Learn the must-know steps to plan, promote, and execute a seamless race — whether it's your first or your fiftieth.</p>
+            <a class="btn btn--secondary" href="#demo">Download guide <span class="btn__arrow" aria-hidden="true">→</span></a>
+          </div>
+          <div class="guide__visual" aria-hidden="true">
+            <img src="assets/images/email-banner.webp" alt="" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer" id="login">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="assets/images/rtd-logo.png" alt="Run The Day" width="140" height="52" />
+          <p>Help your community organize successful races — for causes that matter.</p>
+          <form class="newsletter" id="newsletter-form">
+            <label class="sr-only" for="newsletter-email">Email for newsletter</label>
+            <input id="newsletter-email" type="email" required placeholder="Email for updates" autocomplete="email" />
+            <button class="btn btn--primary btn--sm" type="submit">Subscribe</button>
+          </form>
+        </div>
+        <div class="footer__cols">
+          <div>
+            <h3>Product</h3>
+            <ul>
+              <li><a href="#platform">Registration</a></li>
+              <li><a href="#platform">Race timing</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#how-it-works">How it works</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#case-studies">Case studies</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#guide">Resources</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Support</h3>
+            <ul>
+              <li><a href="#demo">Book a demo</a></li>
+              <li><a href="mailto:support@runtheday.com">support@runtheday.com</a></li>
+              <li><a href="#demo">Setup your race</a></li>
+              <li><a href="#login">Login</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span id="year"></span> Run The Day. All rights reserved.</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com" aria-label="Facebook" rel="noopener noreferrer" target="_blank">Fb</a>
+          <a href="https://www.instagram.com" aria-label="Instagram" rel="noopener noreferrer" target="_blank">Ig</a>
+          <a href="https://www.linkedin.com" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">In</a>
+          <a href="https://www.youtube.com" aria-label="YouTube" rel="noopener noreferrer" target="_blank">Yt</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

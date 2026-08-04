@@ -1,0 +1,172 @@
+/* ==========================================================================
+   Run The Day — Design System
+   Brand-preserving tokens: Black · Gold · Teal · Proxima Nova
+   8px spacing scale · Soft layered elevation · Unified card system
+   ========================================================================== */
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../assets/fonts/Proxima-Nova-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../assets/fonts/Proxima-Nova-Extrabold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Brand */
+  --color-black: #12121b;
+  --color-black-deep: #0b0b12;
+  --color-black-elevated: #181828;
+  --color-black-soft: #1e1e2e;
+  --color-gold: #f0c94a;
+  --color-gold-bright: #f8c71c;
+  --color-gold-soft: #faeec7;
+  --color-gold-muted: #c9a227;
+  --color-teal: #00efa9;
+  --color-teal-soft: #50e3c3;
+  --color-teal-deep: #00b87f;
+  --color-orange: #fa6b1e;
+
+  /* Neutrals */
+  --color-white: #ffffff;
+  --color-off-white: #f7f7f8;
+  --color-gray-50: #f4f4f5;
+  --color-gray-100: #e7e7e8;
+  --color-gray-200: #d0d0d4;
+  --color-gray-300: #a8a8b0;
+  --color-gray-400: #75757e;
+  --color-gray-500: #57575e;
+  --color-gray-600: #3c3c46;
+  --color-gray-700: #2a2a34;
+
+  /* Surfaces */
+  --surface-base: var(--color-black);
+  --surface-raised: var(--color-black-elevated);
+  --surface-overlay: rgba(18, 18, 27, 0.72);
+  --surface-glass: rgba(255, 255, 255, 0.06);
+  --surface-glass-border: rgba(255, 255, 255, 0.12);
+  --surface-light: var(--color-off-white);
+  --surface-card: var(--color-white);
+
+  /* Text */
+  --text-primary: var(--color-white);
+  --text-secondary: rgba(255, 255, 255, 0.72);
+  --text-tertiary: rgba(255, 255, 255, 0.48);
+  --text-inverse: var(--color-black);
+  --text-muted: var(--color-gray-500);
+  --text-body-light: var(--color-gray-600);
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(
+    135deg,
+    rgba(11, 11, 18, 0.92) 0%,
+    rgba(18, 18, 27, 0.75) 45%,
+    rgba(0, 184, 127, 0.18) 100%
+  );
+  --gradient-gold: linear-gradient(135deg, var(--color-gold-bright) 0%, var(--color-gold) 50%, var(--color-gold-muted) 100%);
+  --gradient-teal: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-deep) 100%);
+  --gradient-mesh: radial-gradient(ellipse 80% 60% at 20% 20%, rgba(240, 201, 74, 0.12), transparent 50%),
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(0, 239, 169, 0.1), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 80%, rgba(250, 107, 30, 0.06), transparent 50%);
+  --gradient-track: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 80px,
+    rgba(240, 201, 74, 0.03) 80px,
+    rgba(240, 201, 74, 0.03) 81px
+  );
+
+  /* Typography scale */
+  --font-family: "Proxima Nova", "Montserrat", "Segoe UI", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 800;
+
+  --text-display: clamp(3rem, 7vw, 5.5rem);
+  --text-h1: clamp(2.5rem, 5vw, 4rem);
+  --text-h2: clamp(2rem, 4vw, 3rem);
+  --text-h3: clamp(1.375rem, 2.5vw, 1.75rem);
+  --text-h4: 1.25rem;
+  --text-body-lg: 1.125rem;
+  --text-body: 1rem;
+  --text-caption: 0.875rem;
+  --text-label: 0.75rem;
+  --text-stat: clamp(2rem, 4vw, 3.25rem);
+
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.7;
+
+  --tracking-tight: -0.03em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.06em;
+  --tracking-wider: 0.12em;
+
+  /* 8px spacing system */
+  --space-1: 0.25rem; /* 4 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-5: 1.5rem; /* 24 */
+  --space-6: 2rem; /* 32 */
+  --space-7: 2.5rem; /* 40 */
+  --space-8: 3rem; /* 48 */
+  --space-9: 4rem; /* 64 */
+  --space-10: 5rem; /* 80 */
+  --space-11: 6rem; /* 96 */
+  --space-12: 8rem; /* 128 */
+
+  --section-pad-y: clamp(5rem, 10vw, 8rem);
+  --section-pad-x: clamp(1.25rem, 5vw, 2rem);
+  --container: 1200px;
+  --container-wide: 1400px;
+
+  /* Radii — unified */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Soft layered shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.04), 0 16px 40px rgba(0, 0, 0, 0.12);
+  --shadow-float: 0 8px 16px rgba(0, 0, 0, 0.06), 0 24px 64px rgba(0, 0, 0, 0.16);
+  --shadow-gold: 0 4px 20px rgba(240, 201, 74, 0.28);
+  --shadow-teal: 0 4px 20px rgba(0, 239, 169, 0.22);
+  --shadow-glow-gold: 0 0 40px rgba(240, 201, 74, 0.15);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 200ms;
+  --duration-base: 320ms;
+  --duration-slow: 480ms;
+
+  /* Z-index */
+  --z-nav: 1000;
+  --z-overlay: 900;
+  --z-modal: 1100;
+
+  /* Borders */
+  --border-subtle: 1px solid rgba(255, 255, 255, 0.08);
+  --border-light: 1px solid var(--color-gray-100);
+  --border-gold: 1px solid rgba(240, 201, 74, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}

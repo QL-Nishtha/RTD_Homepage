@@ -28,6 +28,7 @@
       toggle.setAttribute("aria-expanded", String(!open));
       toggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
       menu.classList.toggle("is-open", !open);
+      document.body.style.overflow = open ? "" : "hidden";
     });
 
     menu.querySelectorAll("a").forEach((link) => {
@@ -35,6 +36,7 @@
         toggle.setAttribute("aria-expanded", "false");
         toggle.setAttribute("aria-label", "Open menu");
         menu.classList.remove("is-open");
+        document.body.style.overflow = "";
       });
     });
   }
